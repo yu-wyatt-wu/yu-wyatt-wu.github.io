@@ -158,6 +158,20 @@ h1 {
   line-height: 0.78;
 }
 
+h1 span,
+h1 em {
+  display: block;
+}
+
+h1 em {
+  margin-top: 0.28rem;
+  color: var(--accent-deep);
+  font-size: clamp(2.6rem, 8vw, 6.6rem);
+  font-style: normal;
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+}
+
 .subtitle {
   max-width: 17em;
   margin: 2rem 0 0;
@@ -172,6 +186,29 @@ h1 {
   color: var(--muted);
   font-size: 1.22rem;
   line-height: 1.62;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.7rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.hero-actions a {
+  padding: 0.58rem 0.72rem;
+  border: 1px solid rgba(139, 47, 36, 0.3);
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+.hero-actions a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .folio-card {
@@ -299,7 +336,6 @@ p.prose {
 }
 
 .research-list h3,
-.publications h3,
 .timeline h3 {
   margin: 0.8rem 0 0;
   font-size: 1.38rem;
@@ -308,7 +344,6 @@ p.prose {
 }
 
 .research-list p,
-.publications p,
 .timeline p,
 .side-note {
   color: var(--muted);
@@ -337,46 +372,143 @@ p.prose {
   font-weight: 750;
 }
 
-.publications {
+.publications-section {
+  position: relative;
+}
+
+.publication-year {
   display: grid;
-  gap: 1.15rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: minmax(6rem, 0.22fr) minmax(0, 1fr);
+  gap: 1.15rem 1.8rem;
+  align-items: start;
 }
 
-.publications li {
-  counter-increment: pubs;
+.year {
+  position: sticky;
+  top: 5.6rem;
+  margin: 0.3rem 0 0;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.publications article {
+.publication-card {
+  position: relative;
   display: grid;
-  grid-template-columns: 2.2rem minmax(0, 1fr);
-  gap: 1.5rem;
-  padding: 1.2rem 0;
-  border-top: 1px solid rgba(154, 142, 122, 0.4);
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 2.8vw, 1.65rem);
+  border: 1px solid rgba(154, 142, 122, 0.46);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04)),
+    rgba(232, 223, 202, 0.36);
+  box-shadow: 0 16px 46px rgba(47, 34, 22, 0.08);
 }
 
-.publications article::before {
-  content: "0" counter(pubs);
-  grid-row: span 3;
+.publication-card::after {
+  position: absolute;
+  inset: 0.42rem;
+  content: "";
+  border: 1px solid rgba(139, 47, 36, 0.12);
+  pointer-events: none;
+}
+
+.publication-card.featured {
+  border-color: rgba(139, 47, 36, 0.42);
+  background:
+    linear-gradient(120deg, rgba(139, 47, 36, 0.075), transparent 34%),
+    rgba(232, 223, 202, 0.36);
+}
+
+.pub-stamp {
+  display: grid;
+  align-self: start;
+  min-height: 7.5rem;
+  place-items: center;
+  border: 1px solid rgba(93, 36, 29, 0.38);
+  background:
+    radial-gradient(circle, rgba(139, 47, 36, 0.08), transparent 68%),
+    rgba(244, 239, 227, 0.68);
+  color: var(--accent-deep);
+  text-align: center;
+}
+
+.pub-stamp span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.pub-stamp small {
+  display: block;
+  margin-top: 0.22rem;
   color: var(--faint);
   font-family: var(--sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.09em;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
 }
 
-.publications h3 {
-  margin-top: 0;
+.pub-body {
+  position: relative;
+  z-index: 1;
 }
 
-.publications p {
-  margin: 0.45rem 0 0;
+.pub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.pub-meta span {
+  padding: 0.28rem 0.45rem;
+  border: 1px solid rgba(37, 79, 100, 0.24);
+  color: var(--blue);
+}
+
+.publication-card h3 {
+  margin: 0;
+  max-width: 36em;
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.authors,
+.pub-note {
+  max-width: 46rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.authors {
+  margin: 0.6rem 0 0;
+}
+
+.pub-note {
+  margin: 0.55rem 0 0;
+}
+
+.pub-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.1rem;
+  align-items: start;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .links {
   display: flex;
-  grid-column: 2;
+  flex-wrap: wrap;
   gap: 0.65rem;
   align-self: start;
   font-family: var(--sans);
@@ -390,6 +522,39 @@ p.prose {
   border: 1px solid rgba(139, 47, 36, 0.28);
   color: var(--accent-deep);
   text-decoration: none;
+}
+
+.publication-card details {
+  max-width: 100%;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+
+.publication-card summary {
+  display: inline-flex;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(79, 97, 57, 0.32);
+  color: var(--green);
+  cursor: pointer;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.publication-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.publication-card pre {
+  max-width: min(48rem, 100%);
+  overflow-x: auto;
+  margin: 0.75rem 0 0;
+  padding: 0.8rem;
+  border: 1px solid rgba(154, 142, 122, 0.36);
+  background: rgba(29, 26, 22, 0.045);
+  color: var(--ink);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  white-space: pre;
 }
 
 .links a:hover,
@@ -504,12 +669,23 @@ p.prose {
     min-height: auto;
   }
 
-  .publications article {
-    grid-template-columns: 2.2rem 1fr;
+  .publication-year {
+    grid-template-columns: 1fr;
   }
 
-  .links {
-    grid-column: 2;
+  .year {
+    position: static;
+    margin-top: 1.1rem;
+  }
+
+  .publication-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pub-stamp {
+    display: inline-grid;
+    width: 7.25rem;
+    min-height: 4.5rem;
   }
 }
 
@@ -532,16 +708,15 @@ p.prose {
     font-size: 1rem;
   }
 
-  .publications article {
+  h1 em {
+    font-size: clamp(2.2rem, 16vw, 4rem);
+  }
+
+  .pub-footer {
     display: block;
   }
 
-  .publications article::before {
-    display: block;
-    margin-bottom: 0.45rem;
-  }
-
-  .links {
+  .publication-card details {
     margin-top: 0.8rem;
   }
 }

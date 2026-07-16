@@ -21,7 +21,7 @@
     <div class="grain" aria-hidden="true"></div>
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="Yu Wu homepage">
-        <span>Yu Wu</span>
+        <span>Yu Wu · 吴隅</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#research">Research</a>
@@ -36,7 +36,10 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="kicker">Digital humanities · semantic change · multimodal learning</p>
-          <h1 id="hero-title">Yu Wu</h1>
+          <h1 id="hero-title">
+            <span>Yu Wu</span>
+            <em>吴隅</em>
+          </h1>
           <p class="subtitle">
             Doctoral Researcher in Digital Humanities and Computer Science at the
             University of Helsinki.
@@ -45,6 +48,10 @@
             I study how computational methods can help trace meaning across historical
             texts, multimodal data, and changing cultural contexts.
           </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a href="#publications">Selected publications</a>
+            <a href="https://researchportal.helsinki.fi/en/persons/yu-wu">University profile</a>
+          </div>
         </div>
         <aside class="folio-card" aria-label="Profile summary">
           <div class="folio-mark" aria-hidden="true">
@@ -139,32 +146,81 @@
         </div>
       </section>
 
-      <section class="section" id="publications" aria-labelledby="publications-title">
+      <section class="section publications-section" id="publications" aria-labelledby="publications-title">
         <div class="section-heading">
           <p class="section-label">Publications</p>
           <h2 id="publications-title">Selected work</h2>
         </div>
-        <ol class="publications">
-          <li>
-            <article>
+        <div class="publication-year" aria-label="Publications grouped by year">
+          <p class="year">2024</p>
+          <article class="publication-card">
+            <div class="pub-stamp" aria-hidden="true">
+              <span>CVPR</span>
+              <small>2024</small>
+            </div>
+            <div class="pub-body">
+              <div class="pub-meta">
+                <span>Conference paper</span>
+                <span>Vision-language reasoning</span>
+              </div>
               <h3>Learning by Correction: Efficient Tuning Task for Zero-Shot Generative Vision-Language Reasoning</h3>
-              <p>Rongjie Li, <strong>Yu Wu</strong>, Xuming He. CVPR 2024.</p>
-              <div class="links">
-                <a href="https://doi.org/10.1109/CVPR52733.2024.01275">DOI</a>
-                <a href="https://arxiv.org/abs/2404.00909">arXiv</a>
+              <p class="authors">Rongjie Li, <strong>Yu Wu</strong>, Xuming He.</p>
+              <p class="pub-note">
+                A tuning strategy for zero-shot generative vision-language reasoning,
+                continuing my work on grounded multimodal understanding.
+              </p>
+              <div class="pub-footer">
+                <div class="links">
+                  <a href="https://doi.org/10.1109/CVPR52733.2024.01275">DOI</a>
+                  <a href="https://arxiv.org/abs/2404.00909">arXiv</a>
+                </div>
+                <details>
+                  <summary>BibTeX</summary>
+                  <pre>@inproceedings{li2024learning,
+  title={Learning by Correction: Efficient Tuning Task for Zero-Shot Generative Vision-Language Reasoning},
+  author={Li, Rongjie and Wu, Yu and He, Xuming},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2024}
+}</pre>
+                </details>
               </div>
-            </article>
-          </li>
-          <li>
-            <article>
+            </div>
+          </article>
+
+          <p class="year">2023</p>
+          <article class="publication-card featured">
+            <div class="pub-stamp" aria-hidden="true">
+              <span>ICCV</span>
+              <small>2023</small>
+            </div>
+            <div class="pub-body">
+              <div class="pub-meta">
+                <span>Conference paper</span>
+                <span>Semantic matching</span>
+              </div>
               <h3>Grounded Image Text Matching with Mismatched Relation Reasoning</h3>
-              <p><strong>Yu Wu</strong>, Yana Wei, Haozhe Wang, Yongfei Liu, Sibei Yang, Xuming He. ICCV 2023.</p>
-              <div class="links">
-                <a href="https://arxiv.org/abs/2308.01236">arXiv</a>
+              <p class="authors"><strong>Yu Wu</strong>, Yana Wei, Haozhe Wang, Yongfei Liu, Sibei Yang, Xuming He.</p>
+              <p class="pub-note">
+                A relation-aware approach to image-text matching that reasons about
+                mismatched semantic relations between visual and textual evidence.
+              </p>
+              <div class="pub-footer">
+                <div class="links">
+                  <a href="https://arxiv.org/abs/2308.01236">arXiv</a>
+                </div>
+                <details>
+                  <summary>BibTeX</summary>
+                  <pre>@inproceedings{wu2023grounded,
+  title={Grounded Image Text Matching with Mismatched Relation Reasoning},
+  author={Wu, Yu and Wei, Yana and Wang, Haozhe and Liu, Yongfei and Yang, Sibei and He, Xuming},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year={2023}
+}</pre>
+                </details>
               </div>
-            </article>
-          </li>
-        </ol>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="section cv-grid" id="cv" aria-labelledby="cv-title">
@@ -206,7 +262,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>Yu Wu · University of Helsinki</p>
+      <p>Yu Wu · 吴隅 · University of Helsinki</p>
       <button class="top-button" type="button" aria-label="Back to top">↑</button>
     </footer>
 
