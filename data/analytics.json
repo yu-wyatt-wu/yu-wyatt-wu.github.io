@@ -1,0 +1,46 @@
+{
+  "status": "not_connected",
+  "summary": [
+    {
+      "label": "Privacy mode",
+      "value": "Aggregate only"
+    },
+    {
+      "label": "Visitor IPs",
+      "value": "Not stored"
+    },
+    {
+      "label": "Location detail",
+      "value": "Country / city"
+    }
+  ],
+  "locations": [
+    {
+      "place": "Finland",
+      "visits": 0
+    },
+    {
+      "place": "China",
+      "visits": 0
+    },
+    {
+      "place": "Other",
+      "visits": 0
+    }
+  ],
+  "trend": [
+    {
+      "period": "Last 7 days",
+      "visits": 0
+    },
+    {
+      "period": "Last 30 days",
+      "visits": 0
+    },
+    {
+      "period": "All time",
+      "visits": 0
+    }
+  ],
+  "note": "Connect Plausible or Cloudflare Web Analytics to replace these placeholder aggregates. Do not add raw IP logging to GitHub Pages."
+}

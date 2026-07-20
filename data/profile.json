@@ -1,0 +1,73 @@
+{
+  "name": "Yu Wu",
+  "chineseName": "吴隅",
+  "initials": "YW",
+  "title": "Doctoral Researcher",
+  "subtitle": "Doctoral Researcher studying language models for eighteenth-century intellectual history at the University of Helsinki.",
+  "lede": "I build and evaluate computational methods for discovering historical meaning in large, noisy archives.",
+  "kicker": "Digital humanities · language models · intellectual history",
+  "description": "Yu Wu is a doctoral researcher at the University of Helsinki, studying language models, semantic search, and archival discovery for eighteenth-century intellectual history.",
+  "affiliation": "Department of Digital Humanities, University of Helsinki",
+  "programme": "Doctoral Programme in Computer Science",
+  "researchFocus": "Search as archival discovery for eighteenth-century intellectual history",
+  "aboutTitle": "Search as archival discovery.",
+  "about": [
+    "I am a doctoral researcher at the University of Helsinki, working on language models for eighteenth-century intellectual history. I am interested in search as a form of archival discovery: how computational systems can make meaningful passages visible, retrieve implicit connections across large archives, and still remain accountable to historical interpretation.",
+    "This work sits between digital humanities and NLP. It uses large digitized archives such as ECCO, dense text representations, expert annotation, and close reading to ask when model similarity becomes usable historical evidence. Before Helsinki, I completed a master's degree in computer science at ShanghaiTech University, where I worked on vision-language reasoning and multimodal machine learning."
+  ],
+  "researchDirections": [
+    {
+      "title": "Digital humanities and historical archives",
+      "description": "Using language models and semantic search to support intellectual history, reception studies, and discovery in large-scale historical collections."
+    },
+    {
+      "title": "AI diagnosis and evaluation",
+      "description": "Diagnosing what models capture, miss, or distort in difficult data: noisy OCR, mixed languages, implicit meaning, and historically distant contexts."
+    },
+    {
+      "title": "Matching and reasoning algorithms",
+      "description": "Developing semantic matching, relation reasoning, and multimodal representation methods, extending my earlier work on vision-language reasoning."
+    }
+  ],
+  "currentWork": {
+    "label": "Current Work",
+    "title": "Archival search for intellectual history",
+    "description": "My current work combines textual unit identification, semantic representation evaluation, calibrated search, and close reading. It is part of CASCADE, an EU MSCA Doctoral Network on Computational Analysis of Semantic Change Across Different Environments.",
+    "note": "2024-2028 · CASCADE PhD10",
+    "next": "Next: Locke reception article, retrieval benchmark, calibrated search pipeline.",
+    "links": [
+      {
+        "label": "PhD project page",
+        "url": "https://www.horizoncascade.net/phd10/"
+      },
+      {
+        "label": "CASCADE researchers",
+        "url": "https://www.horizoncascade.net/our-team/researchers/"
+      }
+    ]
+  },
+  "links": [
+    {
+      "label": "University profile",
+      "url": "https://researchportal.helsinki.fi/en/persons/yu-wu"
+    },
+    {
+      "label": "CASCADE profile",
+      "url": "https://www.horizoncascade.net/phd10/"
+    },
+    {
+      "label": "ORCID",
+      "url": "https://orcid.org/0009-0006-1634-5566"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://fi.linkedin.com/in/yu-wu-0160ba147"
+    }
+  ],
+  "analytics": {
+    "provider": "Plausible or Cloudflare Web Analytics",
+    "plausibleDomain": "",
+    "cloudflareToken": "",
+    "note": "Privacy-friendly aggregate analytics only. This site does not store full visitor IP addresses."
+  }
+}

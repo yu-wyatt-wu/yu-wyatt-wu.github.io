@@ -1,0 +1,68 @@
+{
+  "experience": [
+    {
+      "period": "2024-present",
+      "title": "Doctoral Researcher",
+      "place": "University of Helsinki",
+      "description": "Department of Digital Humanities · Doctoral Programme in Computer Science · supervised by Eetu Mäkelä and Mikko Tolonen."
+    },
+    {
+      "period": "2024-2028",
+      "title": "CASCADE Doctoral Network",
+      "place": "EU MSCA Doctoral Network",
+      "description": "PhD10: Adapting computational methods to challenges in historical research at scale."
+    }
+  ],
+  "education": [
+    {
+      "period": "Before Helsinki",
+      "title": "M.Sc. in Computer Science",
+      "place": "ShanghaiTech University",
+      "description": "Vision-language reasoning and multimodal machine learning."
+    }
+  ],
+  "teaching": [
+    {
+      "period": "2025-2026",
+      "title": "Teaching assistant",
+      "place": "University of Helsinki",
+      "description": "Teaching assistant for two courses."
+    },
+    {
+      "period": "2025-2026",
+      "title": "Master's student co-supervision",
+      "place": "University of Helsinki",
+      "description": "Co-supervisor for one master's student."
+    }
+  ],
+  "talks": [
+    {
+      "period": "2026",
+      "title": "EACL presentation",
+      "place": "EACL",
+      "description": "Peer-reviewed conference presentation."
+    },
+    {
+      "period": "2025-2026",
+      "title": "Research talks and seminars",
+      "place": "NAIM, FCAI AI Day, DH, DIHL, ALICE",
+      "description": "Presented ongoing work across symposia and research seminars."
+    }
+  ],
+  "training": [
+    {
+      "period": "2024-2026",
+      "title": "CASCADE training camps and convention",
+      "place": "CASCADE",
+      "description": "Participated in four CASCADE training camps and convention, plus one workshop."
+    },
+    {
+      "period": "2026",
+      "title": "Statistics for Data Science",
+      "place": "University of Helsinki",
+      "description": "Completed 5 credits."
+    }
+  ],
+  "awards": [],
+  "service": []
+}

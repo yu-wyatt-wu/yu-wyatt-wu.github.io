@@ -1,0 +1,28 @@
+[
+  {
+    "date": "2026-05-21",
+    "title": "First annual thesis committee meeting",
+    "body": "Presented current work on search as archival discovery, including Latin fragment detection, semantic search for Locke reception, and upcoming retrieval evaluation.",
+    "tags": ["annual review", "digital humanities"]
+  },
+  {
+    "date": "2026-05-12",
+    "title": "Locke semantic search paper on arXiv",
+    "body": "Matching Meaning at Scale evaluates semantic search for eighteenth-century intellectual history through Locke's reception.",
+    "url": "https://arxiv.org/abs/2605.09236",
+    "tags": ["publication", "semantic search"]
+  },
+  {
+    "date": "2026-02-06",
+    "title": "Latin benchmark accepted to EACL 2026",
+    "body": "Detecting Latin in Historical Books with Large Language Models was accepted by the EACL 2026 main conference.",
+    "url": "https://arxiv.org/abs/2510.19585",
+    "tags": ["publication", "EACL"]
+  },
+  {
+    "date": "2026-01-15",
+    "title": "Teaching and supervision",
+    "body": "Served as teaching assistant for two courses and co-supervised one master's student.",
+    "tags": ["teaching"]
+  }
+]
