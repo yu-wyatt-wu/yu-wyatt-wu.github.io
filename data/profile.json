@@ -50,30 +50,27 @@
       "url": "https://www.horizoncascade.net/phd10/"
     }
   },
-  "education": [
-    {
-      "period": "2024–present",
-      "title": "Doctoral Researcher · CASCADE PhD10",
-      "place": "University of Helsinki",
-      "description": "Research across semantic search, natural language processing, and computational intellectual history.",
-      "logo": "assets/helsinki-logo.svg",
-      "logoAlt": "University of Helsinki"
-    },
-    {
-      "period": "2021–2024",
-      "title": "M.Sc. in Computer Science and Technology",
-      "place": "ShanghaiTech University",
-      "description": "Research on image–text matching, relation reasoning, and efficient vision–language learning.",
-      "logo": "assets/shanghaitech-logo.svg",
-      "logoAlt": "ShanghaiTech University"
-    },
-    {
-      "period": "2017–2021",
-      "title": "B.Sc. in Computer Science and Technology",
-      "place": "ShanghaiTech University",
-      "description": "Undergraduate training in computer science."
-    }
-  ],
+ "education": [
+  {
+    "period": "2024–present",
+    "title": "Doctoral Programme in Science (SciDoc) · Computer Science",
+    "place": "University of Helsinki",
+    "logo": "assets/helsinki-logo.svg",
+    "logoAlt": "University of Helsinki"
+  },
+  {
+    "period": "2021–2024",
+    "title": "M.Sc. in Computer Science and Technology",
+    "place": "ShanghaiTech University",
+    "logo": "assets/shanghaitech-logo.svg",
+    "logoAlt": "ShanghaiTech University"
+  },
+  {
+    "period": "2017–2021",
+    "title": "B.Eng. in Computer Science and Technology",
+    "place": "ShanghaiTech University"
+  }
+],
   "links": [
     {
       "label": "Email",
