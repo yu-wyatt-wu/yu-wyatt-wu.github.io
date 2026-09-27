@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="stylesheet" href="styles.css?v=21">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -491,7 +491,8 @@ function educationItem(item) {
             <time>${esc(item.period)}</time>
             <div class="education-copy">
               <h3>${esc(item.title)}</h3>
-              <p><strong>${esc(item.place)}</strong> · ${esc(item.description)}</p>
+              <p class="education-place"><strong>${esc(item.place)}</strong></p>
+              <p class="education-thesis"><span>Thesis:</span> <em>${esc(item.thesis)}</em></p>
             </div>
             ${item.logo ? `<img class="education-logo" src="${attr(item.logo)}" alt="${attr(item.logoAlt || item.place)} logo">` : ""}
           </article>`;

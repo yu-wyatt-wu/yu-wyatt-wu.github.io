@@ -961,6 +961,24 @@ blockquote {
   line-height: 1.6;
 }
 
+.education-place {
+  margin-top: 0.45rem;
+}
+
+.education-thesis {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.education-thesis span {
+  color: var(--ink);
+}
+
+.education-thesis em {
+  font-style: italic;
+}
+
 .education-entry p strong {
   color: var(--ink);
   font-weight: 400;

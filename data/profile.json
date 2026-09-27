@@ -53,9 +53,9 @@
   "education": [
     {
       "period": "2024–present",
-      "title": "Doctoral Researcher · CASCADE PhD10",
+      "title": "Doctoral Programme in Science (SciDoc) · Computer Science",
       "place": "University of Helsinki",
-      "description": "Research across semantic search, natural language processing, and computational intellectual history.",
+      "thesis": "Search as Archival Discovery: Language Models for Eighteenth-Century Intellectual History",
       "logo": "assets/helsinki-logo.svg",
       "logoAlt": "University of Helsinki"
     },
@@ -63,15 +63,15 @@
       "period": "2021–2024",
       "title": "M.Sc. in Computer Science and Technology",
       "place": "ShanghaiTech University",
-      "description": "Research on image–text matching, relation reasoning, and efficient vision–language learning.",
+      "thesis": "Relational Matching in Vision and Language Based on Linguistic Structure",
       "logo": "assets/shanghaitech-logo.svg",
       "logoAlt": "ShanghaiTech University"
     },
     {
       "period": "2017–2021",
-      "title": "B.Sc. in Computer Science and Technology",
+      "title": "B.Eng. in Computer Science and Technology",
       "place": "ShanghaiTech University",
-      "description": "Undergraduate training in computer science."
+      "thesis": "Top-down Reasoning Policy for Referring Expression Grounding"
     }
   ],
   "links": [
