@@ -3,7 +3,7 @@
 A lightweight, single-page academic homepage for GitHub Pages. Content is
 generated from four source files:
 
-- `data/profile.json`: profile, research agenda, background, and links.
+- `data/profile.json`: profile, research agenda, education, and links.
 - `data/news.json`: news entries shown on the homepage and `news.html`.
 - `data/teaching.json`: teaching and supervision records.
 - `data/publications.bib`: publications, links, contribution notes, and a
@@ -43,6 +43,10 @@ sharing metadata.
 
 The Chinese display name uses a two-glyph subset of Ma Shan Zheng, licensed
 under the SIL Open Font License in `assets/OFL-MaShanZheng.txt`.
+
+Institutional marks in the Education section are used only to identify the
+universities connected to the listed degrees and remain the property of their
+respective institutions.
 
 ## Design notes
 

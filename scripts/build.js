@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=15">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -195,7 +195,7 @@ ${shareMeta}
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="${attr(anchor("research"))}">Research</a>
-        <a href="${attr(anchor("background"))}">Academic</a>
+        <a href="${attr(anchor("education"))}">Education</a>
         <a href="${attr(anchor("news"))}">News</a>
         <a href="${attr(anchor("publications"))}">Publications</a>
         <a href="${attr(anchor("teaching"))}">Teaching</a>
@@ -217,7 +217,7 @@ function homePage() {
   return page(`
       ${heroSection()}
       ${researchSection()}
-      ${backgroundSection()}
+      ${educationSection()}
       ${newsSection()}
       ${publicationsSection()}
       ${teachingSection()}
@@ -479,15 +479,15 @@ function teachingItem(item) {
           </article>`;
 }
 
-function backgroundSection() {
-  return `<section class="section" id="background" aria-labelledby="background-title">
+function educationSection() {
+  return `<section class="section" id="education" aria-labelledby="education-title">
         <header class="section-intro">
-          <p class="section-label">Academic</p>
-          <h2 id="background-title">Academic background</h2>
+          <p class="section-label">Education</p>
+          <h2 id="education-title">Education</h2>
         </header>
-        <div class="background-grid">
-          <div class="timeline">
-            ${profile.background.map(backgroundItem).join("")}
+        <div class="education-grid">
+          <div class="education-timeline">
+            ${profile.education.map(educationItem).join("")}
           </div>
           <aside class="elsewhere">
             <h3>Elsewhere</h3>
@@ -502,13 +502,14 @@ function backgroundSection() {
       </section>`;
 }
 
-function backgroundItem(item) {
-  return `<article>
+function educationItem(item) {
+  return `<article class="education-entry">
             <time>${esc(item.period)}</time>
-            <div>
+            <div class="education-copy">
               <h3>${esc(item.title)}</h3>
               <p><strong>${esc(item.place)}</strong> · ${esc(item.description)}</p>
             </div>
+            ${item.logo ? `<img class="education-logo" src="${attr(item.logo)}" alt="${attr(item.logoAlt || item.place)} logo">` : ""}
           </article>`;
 }
 
