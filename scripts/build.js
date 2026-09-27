@@ -489,15 +489,6 @@ function educationSection() {
           <div class="education-timeline">
             ${profile.education.map(educationItem).join("")}
           </div>
-          <aside class="elsewhere">
-            <h3>Elsewhere</h3>
-            <div class="elsewhere-links">
-              ${profile.links
-                .filter((link) => !heroSocialLabels.includes(link.label))
-                .map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`)
-                .join("")}
-            </div>
-          </aside>
         </div>
       </section>`;
 }
