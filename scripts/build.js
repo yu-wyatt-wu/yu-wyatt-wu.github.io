@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="stylesheet" href="styles.css?v=22">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -243,7 +243,8 @@ function heroSection() {
           </figure>
           <div class="profile-copy">
             <p class="profile-role">${esc(profile.title)}</p>
-            <p class="profile-affiliation">${esc(profile.department)}<br>${esc(profile.affiliation)}</p>
+            <p class="profile-group">${esc(profile.group)}</p>
+            <p class="profile-affiliation">${esc(profile.affiliation)}</p>
             <p class="profile-programme">${esc(profile.programme)}</p>
           </div>
         </aside>
