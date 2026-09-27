@@ -359,7 +359,6 @@ h2 {
 
 .research-overview {
   max-width: 58rem;
-  margin-left: 13.5rem;
 }
 
 .research-lead {
@@ -753,7 +752,6 @@ blockquote {
 
 .news-list {
   max-width: 58rem;
-  margin-left: 13.5rem;
   border-top: 1px solid var(--rule);
 }
 
@@ -842,7 +840,7 @@ blockquote {
 }
 
 .section-more {
-  margin: 1.35rem 0 0 13.5rem;
+  margin: 1.35rem 0 0;
   font-family: var(--sans);
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -860,7 +858,6 @@ blockquote {
 
 .teaching-list {
   max-width: 58rem;
-  margin-left: 13.5rem;
   border-top: 1px solid var(--rule);
 }
 
@@ -915,7 +912,6 @@ blockquote {
 .education-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  margin-left: 13.5rem;
 }
 
 .education-timeline {
