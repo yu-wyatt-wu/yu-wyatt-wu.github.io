@@ -330,8 +330,28 @@ h1 em {
   text-wrap: balance;
 }
 
+.profile-group a {
+  color: var(--ink);
+  text-decoration-color: rgba(139, 47, 36, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.profile-group a:hover {
+  color: var(--accent-deep);
+}
+
+.profile-unit {
+  margin: 0.42rem 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
 .profile-affiliation {
-  margin: 0.22rem 0 0;
+  margin: 0.18rem 0 0;
   color: var(--muted);
   font-size: 0.96rem;
   line-height: 1.45;
