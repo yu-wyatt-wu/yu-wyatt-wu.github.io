@@ -54,7 +54,7 @@ inspiration from [Tufte Jekyll](https://clayh53.github.io/tufte-jekyll/).
 It was developed collaboratively by Yu Wu and Codex: the research narrative,
 content structure, and visual direction were shaped through an ongoing design
 conversation, with Codex implementing the resulting static site and build
-tooling.
+tooling. All content has been carefully reviewed to ensure that it accurately reflects my intended meaning.
 
 ## Publish
 
