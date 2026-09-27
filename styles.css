@@ -350,6 +350,10 @@ h1 em {
   letter-spacing: 0;
 }
 
+.profile-unit span {
+  display: block;
+}
+
 .profile-affiliation {
   margin: 0.18rem 0 0;
   color: var(--muted);

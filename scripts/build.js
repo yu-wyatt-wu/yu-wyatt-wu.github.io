@@ -244,7 +244,7 @@ function heroSection() {
           <div class="profile-copy">
             <p class="profile-role">${esc(profile.title)}</p>
             <p class="profile-group"><a href="${attr(profile.groupUrl)}">${esc(profile.group)}</a></p>
-            <p class="profile-unit">${esc(profile.unit)}</p>
+            <p class="profile-unit"><span>${esc(profile.department)}</span><span>${esc(profile.faculty)}</span></p>
             <p class="profile-affiliation">${esc(profile.affiliation)}</p>
             <p class="profile-programme">${esc(profile.programme)}</p>
           </div>

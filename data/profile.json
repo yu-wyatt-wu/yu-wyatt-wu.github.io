@@ -12,7 +12,8 @@
   "affiliation": "University of Helsinki",
   "group": "Helsinki Computational History Group (COMHIS)",
   "groupUrl": "https://www.helsinki.fi/en/researchgroups/computational-history",
-  "unit": "Department of Digital Humanities · Faculty of Humanities",
+  "department": "Department of Digital Humanities",
+  "faculty": "Faculty of Humanities",
   "programme": "Doctoral Programme in Science (SciDoc) · Computer Science",
   "research": {
     "title": "Research agenda",
