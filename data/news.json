@@ -37,16 +37,16 @@
     "url": "https://aclanthology.org/2026.eacl-long.245/"
   },
   {
-    "date": "2026-01-28",
-    "title": "CASCADE Convention 1 in Leuven",
-    "body": "Joined the first CASCADE Convention, focused on presenting doctoral research, discussing data and methods, exchanging feedback, and connecting with the MECANO training network.",
-    "url": "https://www.horizoncascade.net/convention-1-leuven/"
-  },
-  {
     "date": "2026-02-06",
     "title": "Latin detection benchmark paper accepted at EACL 2026",
     "body": "Our multimodal benchmark for extracting Latin fragments from noisy, mixed-language historical books was accepted to the main conference.",
     "url": "https://2026.eacl.org/program/main-accepted/"
+  },
+  {
+    "date": "2026-01-28",
+    "title": "CASCADE Convention 1 in Leuven",
+    "body": "Joined the first CASCADE Convention, focused on presenting doctoral research, discussing data and methods, exchanging feedback, and connecting with the MECANO training network.",
+    "url": "https://www.horizoncascade.net/convention-1-leuven/"
   },
   {
     "date": "2025-11-26",
