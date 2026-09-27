@@ -187,7 +187,7 @@ ${shareMeta}
       <nav class="nav" aria-label="Primary navigation">
         <a href="${attr(anchor("research"))}">Research</a>
         <a href="${attr(anchor("background"))}">Academic</a>
-        <a href="news.html"${isNewsPage ? ' aria-current="page"' : ""}>News</a>
+        <a href="${attr(anchor("news"))}">News</a>
         <a href="${attr(anchor("publications"))}">Publications</a>
         <a href="${attr(anchor("teaching"))}">Teaching</a>
       </nav>
