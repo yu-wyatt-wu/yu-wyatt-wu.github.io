@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=17">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -269,7 +269,6 @@ function researchSection() {
   const project = research.project;
   return `<section class="section" id="research" aria-labelledby="research-title">
         <header class="section-intro">
-          <p class="section-label">${esc(research.label)}</p>
           <h2 id="research-title">${esc(research.title)}</h2>
         </header>
         <div class="research-overview">
@@ -302,8 +301,7 @@ function publicationsSection() {
   const earlier = publications.filter((publication) => Number(publication.year) < 2025);
   return `<section class="section" id="publications" aria-labelledby="publications-title">
         <header class="section-intro">
-          <p class="section-label">Publications</p>
-          <h2 id="publications-title">Selected work</h2>
+          <h2 id="publications-title">Publications</h2>
         </header>
         ${publicationGroup("Current research", current, false)}
         ${publicationGroup("Earlier research", earlier, true)}
@@ -370,7 +368,6 @@ function displayName(name) {
 function newsSection() {
   return `<section class="section" id="news" aria-labelledby="news-title">
         <header class="section-intro">
-          <p class="section-label">News</p>
           <h2 id="news-title">Recent updates</h2>
         </header>
         <div class="news-list">
@@ -403,7 +400,6 @@ function newsId(item) {
 function newsPage() {
   return page(`<section class="section news-page" id="news" aria-labelledby="news-title">
         <header class="section-intro">
-          <p class="section-label">News</p>
           <h2 id="news-title">News</h2>
         </header>
         <div class="news-list news-archive">
@@ -415,7 +411,6 @@ function newsPage() {
 function notFoundPage() {
   return page(`<section class="section" aria-labelledby="not-found-title">
         <header class="section-intro">
-          <p class="section-label">404</p>
           <h1 id="not-found-title">Page not found</h1>
         </header>
         <div class="research-overview">
@@ -459,7 +454,6 @@ function sitemap() {
 function teachingSection() {
   return `<section class="section" id="teaching" aria-labelledby="teaching-title">
         <header class="section-intro">
-          <p class="section-label">Teaching</p>
           <h2 id="teaching-title">Teaching and supervision</h2>
         </header>
         <div class="teaching-list">
@@ -482,7 +476,6 @@ function teachingItem(item) {
 function educationSection() {
   return `<section class="section" id="education" aria-labelledby="education-title">
         <header class="section-intro">
-          <p class="section-label">Education</p>
           <h2 id="education-title">Education</h2>
         </header>
         <div class="education-grid">
