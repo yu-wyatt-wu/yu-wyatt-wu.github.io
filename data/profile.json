@@ -8,9 +8,9 @@
   "kicker": "Representation learning · Semantics · Intellectual history",
   "subtitle": "I study how knowledge is represented, learned, and transformed across artificial and human systems.",
   "lede": "My research combines representation learning, semantics, and diagnostic evaluation with computational approaches to intellectual history.",
-  "description": "Yu Wu studies learned representations and semantic relations in machine learning, and the transformation of ideas in intellectual history.",
-  "affiliation": "University of Helsinki",
-  "department": "Department of Digital Humanities",
+  "description": "Yu Wu studies learned representations and semantic relations in AI systems, and the transformation of ideas in intellectual history.",
+  "affiliation": "Department of Digital Humanities · Faculty of Humanities · University of Helsinki",
+  "department": "Computational History (COMHIS) Research Group",
   "programme": "Doctoral Programme in Science (SciDoc) · Computer Science",
   "research": {
     "title": "Research agenda",
@@ -34,11 +34,11 @@
       },
       {
         "title": "Diagnosis, Adaptation, and Responsible AI",
-        "description": "Through diagnostic evaluation, I study systematic model capabilities and limitations, use these findings to probe learned representations, and investigate how models can be adapted to become more robust and responsive to different tasks and contexts. This work also contributes to broader questions of responsible AI and alignment, particularly the design of systems that are sensitive to cultural and historical context."
+        "description": "Through diagnostic evaluation, I systematically analyze model capabilities and limitations, use these findings to probe learned representations, and investigate how models can be adapted to become more robust and responsive to different tasks and contexts. This work also contributes to broader questions of responsible AI and alignment, particularly the design of systems that are sensitive to cultural and historical context."
       },
       {
         "title": "Computational Intellectual History and Engagement",
-        "description": "I study how ideas are interpreted, taken up, contested, adapted, and transformed over time. My current work develops computational approaches to identify intellectual engagement beyond generic semantic similarity, aiming to recover meaningful relations between texts while supporting substantive interpretation in intellectual history."
+        "description": "I study how ideas are interpreted, taken up, contested, adapted, and transformed over time. My current work develops computational approaches to identify intellectual engagement beyond generic semantic similarity, aiming to surface meaningful relations between texts while supporting substantive interpretation in intellectual history."
       }
     ],
     "project": {
