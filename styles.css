@@ -424,15 +424,19 @@ blockquote {
   border-top: 3px double rgba(93, 36, 29, 0.3);
 }
 
-.project-line > span {
+.project-line > span,
+.publication-group > h3 {
   display: block;
-  margin-bottom: 0.9rem;
-  color: var(--green);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--accent-deep);
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.project-line > span {
+  margin-bottom: 0.7rem;
 }
 
 .project-line strong {
@@ -489,13 +493,6 @@ blockquote {
   position: sticky;
   top: 5rem;
   margin: 0.25rem 0 0;
-  color: var(--green);
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  line-height: 1.5;
-  text-transform: uppercase;
 }
 
 .publication-list {
