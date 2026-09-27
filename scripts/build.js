@@ -4,12 +4,13 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), "utf8"));
 const readText = (file) => fs.readFileSync(path.join(root, file), "utf8");
-const write = (file, html) => fs.writeFileSync(path.join(root, file), html.replace(/[ \t]+$/gm, ""));
+const write = (file, value) =>
+  fs.writeFileSync(path.join(root, file), value.replace(/[ \t]+$/gm, ""));
 
 const profile = readJson("data/profile.json");
+const siteUrl = String(profile.siteUrl || "").replace(/\/$/, "");
 const news = readJson("data/news.json").sort((a, b) => b.date.localeCompare(a.date));
-const activities = readJson("data/activities.json");
-const analytics = readJson("data/analytics.json");
+const teaching = readJson("data/teaching.json");
 const publications = parseBib(readText("data/publications.bib")).sort((a, b) => {
   const byYear = Number(b.year || 0) - Number(a.year || 0);
   return byYear || a.order - b.order;
@@ -23,11 +24,7 @@ const esc = (value = "") =>
     .replaceAll('"', "&quot;");
 
 const attr = esc;
-const slug = (value = "") =>
-  String(value)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+const heroSocialLabels = ["Email", "LinkedIn", "Google Scholar", "GitHub"];
 
 function parseBib(source) {
   const entries = [];
@@ -50,7 +47,7 @@ function parseBib(source) {
     const key = body.slice(0, comma).trim();
     const fields = parseFields(body.slice(comma + 1));
     const raw = source.slice(at, j).trim();
-    entries.push(normalizePub({ order: entries.length, type, key, raw, ...fields }));
+    entries.push(normalizePublication({ order: entries.length, type, key, raw, ...fields }));
     i = j;
   }
   return entries;
@@ -66,6 +63,7 @@ function parseFields(input) {
     const name = input.slice(nameStart, i).trim();
     if (!name) break;
     while (/[\s=]/.test(input[i] || "")) i++;
+
     let value = "";
     if (input[i] === "{") {
       let depth = 1;
@@ -93,25 +91,40 @@ function parseFields(input) {
   return fields;
 }
 
-function normalizePub(pub) {
-  const venue = pub.venue || pub.booktitle || pub.journal || pub.publisher || "Publication";
-  const tags = splitList(pub.tags);
+function normalizePublication(publication) {
+  const venue =
+    publication.venue ||
+    publication.booktitle ||
+    publication.journal ||
+    publication.publisher ||
+    "Publication";
   const links = [];
-  if (pub.doi) links.push({ label: "DOI", url: `https://doi.org/${pub.doi}` });
-  if (pub.eprint && (pub.archiveprefix || "").toLowerCase() === "arxiv") {
-    links.push({ label: "arXiv", url: `https://arxiv.org/abs/${pub.eprint}` });
+  if (publication.doi) links.push({ label: "DOI", url: `https://doi.org/${publication.doi}` });
+  if (publication.eprint && (publication.archiveprefix || "").toLowerCase() === "arxiv") {
+    links.push({ label: "arXiv", url: `https://arxiv.org/abs/${publication.eprint}` });
   }
-  if (pub.url) links.push({ label: "Link", url: pub.url });
-  if (pub.code) links.push({ label: "Code", url: pub.code });
-  if (pub.data) links.push({ label: "Data", url: pub.data });
+  if (publication.url) links.push({ label: "Link", url: publication.url });
+  if (publication.code) links.push({ label: "Code", url: publication.code });
+  if (publication.data) links.push({ label: "Data", url: publication.data });
+  const labels = splitList(publication.labels);
+  const allowedLabels = new Set(profile.research.publicationThemes || []);
+  const unknownLabels = labels.filter((label) => !allowedLabels.has(label));
+  if (!labels.length) {
+    throw new Error(`Publication ${publication.key} has no research labels.`);
+  }
+  if (unknownLabels.length) {
+    throw new Error(
+      `Publication ${publication.key} uses labels outside the research agenda: ${unknownLabels.join(", ")}`
+    );
+  }
+
   return {
-    ...pub,
+    ...publication,
     venue,
-    tags,
+    labels,
+    authorDisplay: publication.author_display,
     links,
-    selected: String(pub.selected || "").toLowerCase() === "true",
-    stamp: stampFor(venue),
-    kind: pub.type === "inproceedings" ? "Conference paper" : "Preprint"
+    stamp: stampFor(venue)
   };
 }
 
@@ -128,224 +141,216 @@ function stampFor(venue = "") {
   return short ? short[1].toUpperCase() : venue.split(/\s+/).slice(0, 2).join(" ");
 }
 
-function page({ title, description = profile.description, active, main, bodyClass = "" }) {
-  const analyticsScript = analyticsSnippet();
+function page(main, options = {}) {
+  const isHomePage = options.isHomePage === true;
+  const isNewsPage = options.path === "/news.html";
+  const homePrefix = isHomePage ? "" : "index.html";
+  const anchor = (id) => `${homePrefix}#${id}`;
+  const topHref = isHomePage ? "#top" : "index.html#top";
+  const pageTitle = options.title ? `${profile.name} | ${options.title}` : `${profile.name} | ${profile.title}`;
+  const pagePath = options.path || "/";
+  const robotsDirective = options.robots || "index, follow";
+  const shareMeta = siteUrl
+    ? `\n    <link rel="canonical" href="${attr(`${siteUrl}${pagePath}`)}">\n    <meta property="og:url" content="${attr(`${siteUrl}${pagePath}`)}">\n    <meta property="og:image" content="${attr(`${siteUrl}/assets/social-preview.png`)}">\n    <meta property="og:image:width" content="1200">\n    <meta property="og:image:height" content="630">\n    <meta property="og:image:alt" content="Yu Wu, Doctoral Researcher at the University of Helsinki">\n    <meta name="twitter:card" content="summary_large_image">\n    <meta name="twitter:title" content="${attr(pageTitle)}">\n    <meta name="twitter:description" content="${attr(profile.description)}">\n    <meta name="twitter:image" content="${attr(`${siteUrl}/assets/social-preview.png`)}">\n    <meta name="twitter:image:alt" content="Yu Wu, Doctoral Researcher at the University of Helsinki">`
+    : "";
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${esc(title)}</title>
-    <meta name="description" content="${attr(description)}">
+    <title>${esc(pageTitle)}</title>
+    <meta name="description" content="${attr(profile.description)}">
+    <meta name="author" content="${attr(profile.name)}">
+    <meta name="robots" content="${attr(robotsDirective)}">
     <meta name="color-scheme" content="light">
-    <meta property="og:title" content="${attr(title)}">
-    <meta property="og:description" content="${attr(description)}">
+    <meta property="og:title" content="${attr(pageTitle)}">
+    <meta property="og:description" content="${attr(profile.description)}">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="styles.css">
-    ${analyticsScript}
+    <meta property="og:site_name" content="${attr(profile.name)}">
+    <meta property="og:locale" content="en_US">
+${shareMeta}
+    <meta name="theme-color" content="#f4efe3">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=13">
   </head>
-  <body class="${attr(bodyClass)}">
+  <body id="top">
     <div class="grain" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="wordmark" href="index.html" aria-label="${attr(profile.name)} homepage"><span>${esc(profile.name)} · ${esc(profile.chineseName)}</span></a>
+      <a class="wordmark" href="${attr(topHref)}" aria-label="Back to ${attr(profile.name)} homepage">
+        <img src="assets/wy-mark.svg" alt="">
+        <span>${esc(profile.name)} · <b lang="zh-Hans">${esc(profile.chineseName)}</b></span>
+      </a>
       <nav class="nav" aria-label="Primary navigation">
-        ${navLink("index.html", "Home", active)}
-        ${navLink("news.html", "News", active)}
-        ${navLink("publications.html", "Publications", active)}
-        ${navLink("teaching.html", "Teaching", active)}
-        ${navLink("cv.html", "CV", active)}
-        ${navLink("analytics.html", "Analytics", active)}
+        <a href="${attr(anchor("research"))}">Research</a>
+        <a href="${attr(anchor("background"))}">Academic</a>
+        <a href="news.html"${isNewsPage ? ' aria-current="page"' : ""}>News</a>
+        <a href="${attr(anchor("publications"))}">Publications</a>
+        <a href="${attr(anchor("teaching"))}">Teaching</a>
       </nav>
     </header>
     <main>
 ${main}
     </main>
     <footer class="site-footer">
-      <p>${esc(profile.name)} · ${esc(profile.chineseName)} · University of Helsinki</p>
-      <button class="top-button" type="button" aria-label="Back to top">↑</button>
+      <p>${esc(profile.name)} · <span lang="zh-Hans">${esc(profile.chineseName)}</span> · ${esc(profile.affiliation)}</p>
+      <a class="top-link" href="${attr(topHref)}" aria-label="Back to top">↑</a>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
 `;
 }
 
-function navLink(href, label, active) {
-  const isActive = path.basename(href) === active;
-  return `<a href="${href}"${isActive ? ' aria-current="page"' : ""}>${label}</a>`;
-}
-
-function analyticsSnippet() {
-  const plausible = profile.analytics?.plausibleDomain;
-  const cloudflare = profile.analytics?.cloudflareToken;
-  if (plausible) {
-    return `<script defer data-domain="${attr(plausible)}" src="https://plausible.io/js/script.js"></script>`;
-  }
-  if (cloudflare) {
-    return `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${attr(cloudflare)}"}'></script>`;
-  }
-  return "";
-}
-
 function homePage() {
-  const selected = publications.filter((pub) => pub.selected).slice(0, 4);
-  return page({
-    title: `${profile.name} | ${profile.title}`,
-    active: "index.html",
-    main: `
-      <section class="hero" aria-labelledby="hero-title">
+  return page(`
+      ${heroSection()}
+      ${researchSection()}
+      ${backgroundSection()}
+      ${newsSection()}
+      ${publicationsSection()}
+      ${teachingSection()}
+`, { isHomePage: true });
+}
+
+function heroSection() {
+  return `<section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="kicker">${esc(profile.kicker)}</p>
-          <h1 id="hero-title"><span>${esc(profile.name)}</span><em>${esc(profile.chineseName)}</em></h1>
+          <h1 id="hero-title"><span>${esc(profile.name)}</span><em lang="zh-Hans">${esc(profile.chineseName)}</em></h1>
           <p class="subtitle">${esc(profile.subtitle)}</p>
           <p class="lede">${esc(profile.lede)}</p>
-          <div class="hero-actions" aria-label="Primary links">
-            <a href="publications.html">Selected publications</a>
-            <a href="cv.html">CV</a>
-            <a href="${attr(profile.links[0].url)}">University profile</a>
+          <div class="hero-actions">
+            <div class="hero-social" aria-label="Contact and profiles">
+              ${heroSocialLabels.map(socialLink).join("")}
+            </div>
           </div>
         </div>
-        <aside class="folio-card" aria-label="Profile summary">
-          <div class="folio-mark" aria-hidden="true"><span>${esc(profile.initials)}</span></div>
-          <dl>
-            <div><dt>Affiliation</dt><dd>${esc(profile.affiliation)}</dd></div>
-            <div><dt>Doctoral programme</dt><dd>${esc(profile.programme)}</dd></div>
-            <div><dt>Research focus</dt><dd>${esc(profile.researchFocus)}</dd></div>
-            <div><dt>ORCID</dt><dd><a href="${attr(findLink("ORCID"))}">${esc(orcidId())}</a></dd></div>
-          </dl>
+        <aside class="profile-card" aria-label="Profile summary">
+          <figure class="portrait-frame">
+            <img src="${attr(profile.portrait)}" alt="${attr(profile.portraitAlt)}" width="1000" height="662" decoding="async">
+          </figure>
+          <div class="profile-copy">
+            <p class="profile-role">${esc(profile.title)}</p>
+            <p class="profile-affiliation">${esc(profile.department)}<br>${esc(profile.affiliation)}</p>
+            <p class="profile-programme">${esc(profile.programme)}</p>
+          </div>
         </aside>
-      </section>
-      ${aboutSection()}
-      ${newsPreview(news.slice(0, 3))}
-      ${researchSection()}
-      ${currentWorkSection()}
-      ${publicationsSection(selected, "Selected work", "publications.html")}
-      ${briefCvSection()}
-      ${contactSection()}
-`
-  });
-}
-
-function aboutSection() {
-  return `
-      <section class="section intro-grid" aria-labelledby="about-title">
-        <div><p class="section-label">About</p><h2 id="about-title">${esc(profile.aboutTitle)}</h2></div>
-        <div class="prose">${profile.about.map((p) => `<p>${esc(p)}</p>`).join("")}</div>
       </section>`;
 }
 
-function newsPreview(items) {
-  return `
-      <section class="section" id="news" aria-labelledby="news-title">
-        <div class="section-heading">
-          <p class="section-label">News</p>
-          <h2 id="news-title">Recent notes</h2>
-        </div>
-        <div class="news-list compact-list">
-          ${items.map(newsItem).join("")}
-        </div>
-        <p class="section-link"><a href="news.html">All news</a></p>
-      </section>`;
+function socialLink(label) {
+  return `<a class="social-icon" href="${attr(findLink(label))}" aria-label="${attr(label)}" title="${attr(label)}">${socialIcon(label)}</a>`;
+}
+
+function socialIcon(label) {
+  const icons = {
+    Email: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
+    LinkedIn: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>`,
+    "Google Scholar": `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.92a1 1 0 0 0-.84-.92l-8-4a1 1 0 0 0-.9 0l-8 4a1 1 0 0 0 0 1.8l8 4a1 1 0 0 0 .9 0l3.43-1.72V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-4.94l5.55 2.78a1 1 0 0 0 .9 0l8-4a1 1 0 0 0 .97-1.92Z"></path><path d="M6 14v5"></path></svg>`,
+    GitHub: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-2a4.8 4.8 0 0 0-1-3.5c3.28-.36 6.72-1.61 6.72-7.25A5.64 5.64 0 0 0 19.22 5.3 5.07 5.07 0 0 0 19.08 1S17.92.64 15 2.6a13.38 13.38 0 0 0-7 0C5.08.64 3.92 1 3.92 1a5.07 5.07 0 0 0-.14 4.3 5.64 5.64 0 0 0-1.5 3.9c0 5.63 3.44 6.88 6.72 7.25A4.8 4.8 0 0 0 8 20v2"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>`
+  };
+  return icons[label] || "";
 }
 
 function researchSection() {
-  return `
-      <section class="section" id="research" aria-labelledby="research-title">
-        <div class="section-heading">
-          <p class="section-label">Research</p>
-          <h2 id="research-title">Research directions</h2>
+  const research = profile.research;
+  const project = research.project;
+  return `<section class="section" id="research" aria-labelledby="research-title">
+        <header class="section-intro">
+          <p class="section-label">${esc(research.label)}</p>
+          <h2 id="research-title">${esc(research.title)}</h2>
+        </header>
+        <div class="research-overview">
+          <p class="research-lead">${esc(research.overview)}</p>
         </div>
-        <div class="research-list">
-          ${profile.researchDirections
+        <div class="research-areas">
+          ${research.areas
             .map(
-              (item, index) => `<article>
-            <span class="number">${["I", "II", "III", "IV"][index] || index + 1}</span>
-            <h3>${esc(item.title)}</h3>
-            <p>${esc(item.description)}</p>
+              (area, index) => `<article>
+            <span>${String(index + 1).padStart(2, "0")}</span>
+            <h3>${esc(area.title)}</h3>
+            <p>${esc(area.description)}</p>
           </article>`
             )
             .join("")}
         </div>
-      </section>`;
-}
-
-function currentWorkSection() {
-  const work = profile.currentWork;
-  return `
-      <section class="section project-panel" id="projects" aria-labelledby="projects-title">
-        <div>
-          <p class="section-label">${esc(work.label)}</p>
-          <h2 id="projects-title">${esc(work.title)}</h2>
-          <p class="prose">${esc(work.description)}</p>
-        </div>
-        <div class="side-note">
-          <p>${esc(work.note)}</p>
-          ${work.links.map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`).join("")}
-          <span>${esc(work.next)}</span>
+        <div class="project-line">
+          <span>Current project</span>
+          <strong>
+            <a href="${attr(project.url)}">${esc(project.fullName)} (${esc(project.name)})</a>
+            <span class="project-funding">${esc(project.funding)}</span>
+          </strong>
+          <p><span class="project-focus-title">${esc(project.projectTitle)}</span>${esc(project.focus)}</p>
         </div>
       </section>`;
 }
 
-function publicationsPage() {
-  return page({
-    title: `Publications | ${profile.name}`,
-    active: "publications.html",
-    main: pageHero("Publications", "Selected work", "Generated from BibTeX, grouped by year, with links and expandable citations.") + publicationsSection(publications, "All publications")
-  });
-}
-
-function publicationsSection(items, heading, moreHref = "") {
-  return `
-      <section class="section publications-section" id="publications" aria-labelledby="publications-title">
-        <div class="section-heading">
+function publicationsSection() {
+  const current = publications.filter((publication) => Number(publication.year) >= 2025);
+  const earlier = publications.filter((publication) => Number(publication.year) < 2025);
+  return `<section class="section" id="publications" aria-labelledby="publications-title">
+        <header class="section-intro">
           <p class="section-label">Publications</p>
-          <h2 id="publications-title">${esc(heading)}</h2>
-        </div>
-        <div class="publication-year" aria-label="Publications grouped by year">
-          ${groupedByYear(items)
-            .map(([year, pubs]) => pubs.map((pub, index) => `${index === 0 ? `<p class="year">${esc(year)}</p>` : '<p class="year ghost-year" aria-hidden="true"></p>'}${publicationCard(pub)}`).join(""))
-            .join("")}
-        </div>
-        ${moreHref ? `<p class="section-link"><a href="${moreHref}">All publications</a></p>` : ""}
+          <h2 id="publications-title">Selected work</h2>
+        </header>
+        ${publicationGroup("Current research", current, false)}
+        ${publicationGroup("Earlier research", earlier, true)}
       </section>`;
 }
 
-function groupedByYear(items) {
-  const groups = new Map();
-  for (const item of items) {
-    const year = item.year || "Undated";
-    if (!groups.has(year)) groups.set(year, []);
-    groups.get(year).push(item);
-  }
-  return [...groups.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
+function publicationGroup(title, items, compact) {
+  if (!items.length) return "";
+  return `<section class="publication-group${compact ? " earlier-work" : ""}">
+          <h3>${esc(title)}</h3>
+          <div class="publication-list">
+            ${items.map((publication) => publicationCard(publication, compact)).join("")}
+          </div>
+        </section>`;
 }
 
-function publicationCard(pub) {
-  const meta = [pub.venue, ...pub.tags].filter(Boolean);
-  return `
-          <article class="publication-card${pub.selected ? " featured" : ""}">
-            <div class="pub-stamp" aria-hidden="true"><span>${esc(pub.stamp)}</span><small>${esc(pub.year)}</small></div>
-            <div class="pub-body">
-              <div class="pub-meta">${meta.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
-              <h3>${esc(pub.title)}</h3>
-              <p class="authors">${formatAuthors(pub.author)}</p>
-              ${pub.note ? `<p class="pub-note">${esc(pub.note)}</p>` : ""}
-              <div class="pub-footer">
-                <div class="links">${pub.links.map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`).join("")}</div>
-                <details><summary>BibTeX</summary><pre>${esc(pub.raw)}</pre></details>
+function publicationCard(publication, compact) {
+  const primaryLink =
+    publication.links.find((link) => link.label === "DOI") ||
+    publication.links.find((link) => link.label === "arXiv") ||
+    publication.links[0];
+  return `<article class="publication-card${compact ? " compact" : ""}">
+              <div class="pub-stamp" aria-hidden="true">
+                <span>${esc(publication.stamp)}</span>
+                <small>${esc(publication.year)}</small>
               </div>
-            </div>
-          </article>`;
+              <div class="pub-body">
+                <div class="pub-meta"><span>${esc(publication.venue)}</span><span>${esc(publication.year)}</span></div>
+                <div class="pub-labels" aria-label="Research themes">${publication.labels.map((label) => `<span>${esc(label)}</span>`).join("")}</div>
+                <h4>${primaryLink ? `<a href="${attr(primaryLink.url)}">${esc(publication.title)}</a>` : esc(publication.title)}</h4>
+                <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author)}</p>
+                ${publication.note ? `<p class="contribution"><span>Contribution</span>${esc(publication.note)}</p>` : ""}
+                <div class="pub-footer">
+                  <div class="publication-links">${publication.links
+                    .map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`)
+                    .join("")}</div>
+                  <details><summary>BibTeX</summary><pre>${esc(publication.raw)}</pre></details>
+                </div>
+              </div>
+            </article>`;
 }
 
 function formatAuthors(authors = "") {
-  return authors
-    .split(/\s+and\s+/)
-    .map((name) => {
-      const clean = displayName(name.trim());
-      return /Yu\s+Wu/i.test(clean) ? `<strong>${esc(clean)}</strong>` : esc(clean);
-    })
-    .join(", ") + ".";
+  return (
+    authors
+      .split(/\s+and\s+/)
+      .map((name) => {
+        const clean = displayName(name.trim());
+        return /Yu\s+Wu/i.test(clean) ? `<strong>${esc(clean)}</strong>` : esc(clean);
+      })
+      .join(", ") + "."
+  );
+}
+
+function highlightOwnName(value = "") {
+  return esc(value).replace(/Yu Wu/g, "<strong>Yu Wu</strong>");
 }
 
 function displayName(name) {
@@ -353,161 +358,177 @@ function displayName(name) {
   return parts.length === 2 ? `${parts[1]} ${parts[0]}` : name;
 }
 
+function newsSection() {
+  return `<section class="section" id="news" aria-labelledby="news-title">
+        <header class="section-intro">
+          <p class="section-label">News</p>
+          <h2 id="news-title">Recent updates</h2>
+        </header>
+        <div class="news-list">
+          ${news.slice(0, 5).map((item, index) => newsItem(item, { compact: index > 0 })).join("")}
+        </div>
+        <p class="section-more"><a href="news.html">View all news</a></p>
+      </section>`;
+}
+
+function newsItem(item, options = {}) {
+  const compact = options.compact === true;
+  const target = options.archive ? `#${newsId(item)}` : `news.html#${newsId(item)}`;
+  return `<article class="news-item${compact ? " compact" : ""}${item.featured ? " featured" : ""}" id="${attr(newsId(item))}">
+            <div class="news-date">
+              <time datetime="${attr(item.date)}">${formatDate(item.date)}</time>
+              ${item.featured ? '<span class="news-mark">New</span>' : ""}
+            </div>
+            <div>
+              <h3><a href="${attr(target)}">${esc(item.title)}</a></h3>
+              ${compact ? "" : `<p>${esc(item.body)}</p>`}
+              ${!compact && item.url ? `<p class="news-source"><a href="${attr(item.url)}">Source</a></p>` : ""}
+            </div>
+          </article>`;
+}
+
+function newsId(item) {
+  return `news-${item.date}`;
+}
+
 function newsPage() {
-  return page({
-    title: `News | ${profile.name}`,
-    active: "news.html",
-    main: pageHero("News", "Recent notes", "Updates on papers, presentations, teaching, and project milestones.") + `
-      <section class="section">
-        <div class="news-list">${news.map(newsItem).join("")}</div>
-      </section>`
-  });
+  return page(`<section class="section news-page" id="news" aria-labelledby="news-title">
+        <header class="section-intro">
+          <p class="section-label">News</p>
+          <h2 id="news-title">News</h2>
+        </header>
+        <div class="news-list news-archive">
+          ${news.map((item) => newsItem(item, { archive: true })).join("")}
+        </div>
+      </section>`, { title: "News", path: "/news.html" });
 }
 
-function newsItem(item) {
-  return `<article class="news-item">
-    <time datetime="${attr(item.date)}">${formatDate(item.date)}</time>
-    <div>
-      <h3>${item.url ? `<a href="${attr(item.url)}">${esc(item.title)}</a>` : esc(item.title)}</h3>
-      <p>${esc(item.body)}</p>
-      ${item.tags?.length ? `<div class="pub-meta">${item.tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>` : ""}
-    </div>
-  </article>`;
+function notFoundPage() {
+  return page(`<section class="section" aria-labelledby="not-found-title">
+        <header class="section-intro">
+          <p class="section-label">404</p>
+          <h1 id="not-found-title">Page not found</h1>
+        </header>
+        <div class="research-overview">
+          <p class="research-lead">The page you requested is not available. <a href="index.html">Return to the homepage</a>.</p>
+        </div>
+      </section>`, { title: "Page not found", path: "/404.html", robots: "noindex, follow" });
 }
 
-function teachingPage() {
-  const teaching = [...(activities.teaching || []), ...(activities.training || [])];
-  return page({
-    title: `Teaching | ${profile.name}`,
-    active: "teaching.html",
-    main: pageHero("Teaching", "Courses, supervision, and training", "Teaching activities, student supervision, and doctoral training.") + `
-      <section class="section cv-grid">
-        <div><p class="section-label">Teaching</p><h2>Teaching and supervision</h2></div>
-        <div class="timeline">${teaching.map(timelineItem).join("") || emptyState("Teaching entries will appear here.")}</div>
-      </section>`
-  });
+function manifest() {
+  return JSON.stringify(
+    {
+      name: `${profile.name} | ${profile.title}`,
+      short_name: profile.name,
+      description: profile.description,
+      lang: "en",
+      start_url: "./",
+      display: "minimal-ui",
+      background_color: "#f4efe3",
+      theme_color: "#f4efe3",
+      icons: [
+        { src: "assets/icon-192.png", sizes: "192x192", type: "image/png" },
+        { src: "assets/icon-512.png", sizes: "512x512", type: "image/png" }
+      ]
+    },
+    null,
+    2
+  );
 }
 
-function cvPage() {
-  const selectedPubs = publications.slice(0, 6);
-  return page({
-    title: `CV | ${profile.name}`,
-    active: "cv.html",
-    bodyClass: "cv-page",
-    main: pageHero("CV", `${profile.name} · ${profile.chineseName}`, "A structured curriculum vitae generated from the same data used by the homepage.") + `
-      <section class="section cv-tools">
-        <button class="print-button" type="button" onclick="window.print()">Print / Save as PDF</button>
-      </section>
-      ${cvSection("Appointments", activities.experience)}
-      ${cvSection("Education", activities.education)}
-      ${cvSection("Teaching", activities.teaching)}
-      ${cvSection("Talks", activities.talks)}
-      ${cvSection("Training", activities.training)}
-      <section class="section cv-grid">
-        <div><p class="section-label">Publications</p><h2>Selected publications</h2></div>
-        <div class="cv-publications">${selectedPubs.map((pub) => `<p>${formatAuthors(pub.author)} ${esc(pub.title)}. <em>${esc(pub.venue)}</em>, ${esc(pub.year)}.</p>`).join("")}</div>
-      </section>
-      ${contactSection()}`
-  });
+function robots() {
+  return `User-agent: *\nAllow: /${siteUrl ? `\n\nSitemap: ${siteUrl}/sitemap.xml` : ""}\n`;
 }
 
-function cvSection(title, items = []) {
-  return `
-      <section class="section cv-grid">
-        <div><p class="section-label">CV</p><h2>${esc(title)}</h2></div>
-        <div class="timeline">${items.map(timelineItem).join("") || emptyState(`${title} entries will appear here.`)}</div>
+function sitemap() {
+  const urls = ["/", "/news.html"];
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+    .map((url) => `  <url><loc>${esc(`${siteUrl}${url}`)}</loc></url>`)
+    .join("\n")}\n</urlset>\n`;
+}
+
+function teachingSection() {
+  return `<section class="section" id="teaching" aria-labelledby="teaching-title">
+        <header class="section-intro">
+          <p class="section-label">Teaching</p>
+          <h2 id="teaching-title">Teaching and supervision</h2>
+        </header>
+        <div class="teaching-list">
+          ${teaching.map(teachingItem).join("")}
+        </div>
       </section>`;
 }
 
-function timelineItem(item) {
+function teachingItem(item) {
+  return `<article class="teaching-item">
+            <time>${esc(item.period)}</time>
+            <div>
+              <div class="teaching-meta"><span>${esc(item.type)}</span>${item.hours ? `<span>${esc(item.hours)}</span>` : ""}</div>
+              <h3>${esc(item.title)}</h3>
+              <p>${esc(item.description)}</p>
+            </div>
+          </article>`;
+}
+
+function backgroundSection() {
+  return `<section class="section" id="background" aria-labelledby="background-title">
+        <header class="section-intro">
+          <p class="section-label">Academic</p>
+          <h2 id="background-title">Academic background</h2>
+        </header>
+        <div class="background-grid">
+          <div class="timeline">
+            ${profile.background.map(backgroundItem).join("")}
+          </div>
+          <aside class="elsewhere">
+            <h3>Elsewhere</h3>
+            <div class="elsewhere-links">
+              ${profile.links
+                .filter((link) => !heroSocialLabels.includes(link.label))
+                .map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`)
+                .join("")}
+            </div>
+          </aside>
+        </div>
+      </section>`;
+}
+
+function backgroundItem(item) {
   return `<article>
-    <time>${esc(item.period)}</time>
-    <h3>${esc(item.title)}</h3>
-    <p>${[item.place, item.description].filter(Boolean).map(esc).join(" · ")}</p>
-  </article>`;
-}
-
-function briefCvSection() {
-  const items = [
-    ...(activities.experience || []),
-    ...(activities.education || []),
-    ...(activities.teaching || []).slice(0, 1)
-  ].slice(0, 4);
-  return `
-      <section class="section cv-grid" id="cv" aria-labelledby="cv-title">
-        <div><p class="section-label">CV</p><h2 id="cv-title">Brief academic record</h2></div>
-        <div class="timeline">${items.map(timelineItem).join("")}</div>
-      </section>`;
-}
-
-function analyticsPage() {
-  return page({
-    title: `Analytics | ${profile.name}`,
-    active: "analytics.html",
-    main: pageHero("Analytics", "Privacy-friendly visits", "Aggregate traffic notes and location-level visualization. This site does not store full visitor IP addresses.") + `
-      <section class="section analytics-grid">
-        ${analytics.summary.map((item) => `<article class="stat-card"><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong></article>`).join("")}
-      </section>
-      <section class="section cv-grid">
-        <div><p class="section-label">Locations</p><h2>Visit geography</h2></div>
-        <div class="bar-list">${barList(analytics.locations)}</div>
-      </section>
-      <section class="section cv-grid">
-        <div><p class="section-label">Trend</p><h2>Traffic overview</h2></div>
-        <div class="bar-list">${barList(analytics.trend, "period")}</div>
-      </section>
-      <section class="section"><p class="prose">${esc(analytics.note)}</p></section>`
-  });
-}
-
-function barList(items, labelKey = "place") {
-  const max = Math.max(...items.map((item) => Number(item.visits)), 1);
-  return items
-    .map((item) => {
-      const width = Math.max(4, (Number(item.visits) / max) * 100);
-      return `<div class="bar-row"><span>${esc(item[labelKey])}</span><div><i style="width: ${width}%"></i></div><strong>${esc(item.visits)}</strong></div>`;
-    })
-    .join("");
-}
-
-function contactSection() {
-  return `
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <div><p class="section-label">Contact</p><h2 id="contact-title">Profiles and links</h2></div>
-        <div class="contact-links">${profile.links.map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`).join("")}</div>
-      </section>`;
-}
-
-function pageHero(label, title, description) {
-  return `
-      <section class="section page-title">
-        <p class="section-label">${esc(label)}</p>
-        <h1>${esc(title)}</h1>
-        <p class="lede">${esc(description)}</p>
-      </section>`;
+            <time>${esc(item.period)}</time>
+            <div>
+              <h3>${esc(item.title)}</h3>
+              <p><strong>${esc(item.place)}</strong> · ${esc(item.description)}</p>
+            </div>
+          </article>`;
 }
 
 function formatDate(date) {
-  return new Intl.DateTimeFormat("en", { year: "numeric", month: "short", day: "2-digit" }).format(new Date(`${date}T00:00:00Z`));
+  return new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit"
+  }).format(new Date(`${date}T00:00:00Z`));
 }
 
 function findLink(label) {
   return profile.links.find((link) => link.label === label)?.url || "#";
 }
 
-function orcidId() {
-  return findLink("ORCID").replace("https://orcid.org/", "");
-}
-
-function emptyState(text) {
-  return `<p class="empty-state">${esc(text)}</p>`;
-}
-
 write("index.html", homePage());
-write("publications.html", publicationsPage());
 write("news.html", newsPage());
-write("teaching.html", teachingPage());
-write("cv.html", cvPage());
-write("analytics.html", analyticsPage());
+write("404.html", notFoundPage());
+write("site.webmanifest", manifest());
+write("robots.txt", robots());
 
-console.log("Built index.html, publications.html, news.html, teaching.html, cv.html, analytics.html");
+if (siteUrl) {
+  write("sitemap.xml", sitemap());
+} else {
+  fs.rmSync(path.join(root, "sitemap.xml"), { force: true });
+}
+
+for (const stalePage of ["publications.html", "teaching.html", "cv.html", "analytics.html"]) {
+  fs.rmSync(path.join(root, stalePage), { force: true });
+}
+
+console.log("Built index.html");

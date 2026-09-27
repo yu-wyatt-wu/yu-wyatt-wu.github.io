@@ -1,28 +1,81 @@
 [
   {
-    "date": "2026-05-21",
-    "title": "First annual thesis committee meeting",
-    "body": "Presented current work on search as archival discovery, including Latin fragment detection, semantic search for Locke reception, and upcoming retrieval evaluation.",
-    "tags": ["annual review", "digital humanities"]
+    "date": "2026-09-27",
+    "title": "Agents' Last Exam accepted to NeurIPS 2026",
+      "body": "A large collaborative benchmark for evaluating AI agents on long-horizon professional tasks, has been accepted to the Evaluations and Datasets track at NeurIPS 2026. I am glad to contribute to testing agent capability limits in using digital interfaces for historical knowledge work.",
+    "featured": true,
+    "url": "https://agents-last-exam.org/"
+  },
+  {
+    "date": "2026-09-03",
+    "title": "Presented at DHC 2026 in Sheffield",
+    "body": "Presented Beyond Lexical Reuse: Evaluating Semantic Search for 18th-Century Intellectual History through the Case of Locke in the Digital Humanities Congress 2026 programme.",
+    "url": "https://www.horizoncascade.net/convention-2-digital-humanities-congress-2026/"
+  },
+  {
+    "date": "2026-09-01",
+    "title": "CASCADE Training Camp 4 in Sheffield",
+    "body": "Joined CASCADE Camp 4 on Questions & Methods, with sessions on career pathways, communicating research to non-specialists, and applying research skills in an industry setting.",
+    "url": "https://www.horizoncascade.net/training-camp-4-sheffield/"
   },
   {
     "date": "2026-05-12",
-    "title": "Locke semantic search paper on arXiv",
-    "body": "Matching Meaning at Scale evaluates semantic search for eighteenth-century intellectual history through Locke's reception.",
-    "url": "https://arxiv.org/abs/2605.09236",
-    "tags": ["publication", "semantic search"]
+    "title": "Proof-of-concept paper on semantic search for intellectual history accepted at NLP4DH 2026",
+    "body": "The paper combines a historian-built semantic taxonomy with expert annotation to evaluate dense retrieval through the case of Locke's reception.",
+    "url": "https://aclanthology.org/2026.nlp4dh-1.20/"
+  },
+  {
+    "date": "2026-04-22",
+    "title": "Attended Digital Language Sovereignty – Euskadi–Finland AI & Language in Helsinki",
+    "body": "Participated in the Helsinki event, which addressed digital language sovereignty, low-resource languages, language models, datasets, and research infrastructures.",
+    "url": "https://blogs.helsinki.fi/fcai-sig-lsc/2026/04/10/workshop-on-digital-language-sovereignty-euskadi-finland-ai-language/"
+  },
+  {
+    "date": "2026-03-24",
+    "title": "Presented at EACL 2026 in Rabat",
+    "body": "Presented Detecting Latin in Historical Books with Large Language Models: A Multimodal Benchmark at the 19th Conference of the European Chapter of the Association for Computational Linguistics.",
+    "url": "https://aclanthology.org/2026.eacl-long.245/"
+  },
+  {
+    "date": "2026-01-28",
+    "title": "CASCADE Convention 1 in Leuven",
+    "body": "Joined the first CASCADE Convention, focused on presenting doctoral research, discussing data and methods, exchanging feedback, and connecting with the MECANO training network.",
+    "url": "https://www.horizoncascade.net/convention-1-leuven/"
   },
   {
     "date": "2026-02-06",
-    "title": "Latin benchmark accepted to EACL 2026",
-    "body": "Detecting Latin in Historical Books with Large Language Models was accepted by the EACL 2026 main conference.",
-    "url": "https://arxiv.org/abs/2510.19585",
-    "tags": ["publication", "EACL"]
+    "title": "Latin detection benchmark paper accepted at EACL 2026",
+    "body": "Our multimodal benchmark for extracting Latin fragments from noisy, mixed-language historical books was accepted to the main conference.",
+    "url": "https://2026.eacl.org/program/main-accepted/"
   },
   {
-    "date": "2026-01-15",
-    "title": "Teaching and supervision",
-    "body": "Served as teaching assistant for two courses and co-supervised one master's student.",
-    "tags": ["teaching"]
+    "date": "2025-11-26",
+    "title": "Presented at Nordic AI Meet 2025 in Norrköping",
+    "body": "Presented the ongoing work Detecting Latin in Historical Books with Large Language Models: A Multimodal Benchmark in Norrköping, Sweden.",
+    "url": "https://wasp-sweden.org/event/naim-2025-nordic-ai-meet-2025/"
+  },
+  {
+    "date": "2025-11-13",
+    "title": "Presented at FCAI AI Day 2025 in Espoo",
+    "body": "Presented the ongoing work Detecting Latin in Historical Books with Large Language Models: A Multimodal Benchmark in Espoo, Finland.",
+    "url": "https://fcai.fi/calendar/2025/ai-day"
+  },
+  {
+    "date": "2025-08-20",
+    "title": "CASCADE Training Camp 3 in Helsinki",
+    "body": "Joined CASCADE Camp 3 on the interplay between data, questions, and methods, with colleagues from King's College London, the University of Turku, and the University of Helsinki Computational History Group.",
+    "url": "https://www.horizoncascade.net/workshop-3-helsinki/"
+  },
+  {
+    "date": "2025-03-11",
+    "title": "CASCADE Training Camp 2 in Saarbrücken",
+    "body": "Joined CASCADE Camp 2 on research design, with contributions from Varieng Helsinki and the University of Glasgow.",
+    "url": "https://www.horizoncascade.net/workshop-2-saarbrucken/"
+  },
+  {
+    "date": "2024-11-26",
+    "title": "CASCADE Training Camp 1 in Sheffield",
+    "body": "Joined the first CASCADE Training Camp to meet the doctoral network, learn about each other's research, and discuss the requirements of the programme.",
+    "url": "https://www.horizoncascade.net/workshop-1-sheffield/"
   }
 ]

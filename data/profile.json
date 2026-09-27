@@ -1,58 +1,81 @@
 {
   "name": "Yu Wu",
   "chineseName": "吴隅",
-  "initials": "YW",
+  "portrait": "assets/portrait.jpg",
+  "portraitAlt": "Portrait of Yu Wu",
+  "siteUrl": "https://yu-wyatt-wu.github.io",
   "title": "Doctoral Researcher",
-  "subtitle": "Doctoral Researcher studying language models for eighteenth-century intellectual history at the University of Helsinki.",
-  "lede": "I build and evaluate computational methods for discovering historical meaning in large, noisy archives.",
-  "kicker": "Digital humanities · language models · intellectual history",
-  "description": "Yu Wu is a doctoral researcher at the University of Helsinki, studying language models, semantic search, and archival discovery for eighteenth-century intellectual history.",
-  "affiliation": "Department of Digital Humanities, University of Helsinki",
-  "programme": "Doctoral Programme in Computer Science",
-  "researchFocus": "Search as archival discovery for eighteenth-century intellectual history",
-  "aboutTitle": "Search as archival discovery.",
-  "about": [
-    "I am a doctoral researcher at the University of Helsinki, working on language models for eighteenth-century intellectual history. I am interested in search as a form of archival discovery: how computational systems can make meaningful passages visible, retrieve implicit connections across large archives, and still remain accountable to historical interpretation.",
-    "This work sits between digital humanities and NLP. It uses large digitized archives such as ECCO, dense text representations, expert annotation, and close reading to ask when model similarity becomes usable historical evidence. Before Helsinki, I completed a master's degree in computer science at ShanghaiTech University, where I worked on vision-language reasoning and multimodal machine learning."
-  ],
-  "researchDirections": [
-    {
-      "title": "Digital humanities and historical archives",
-      "description": "Using language models and semantic search to support intellectual history, reception studies, and discovery in large-scale historical collections."
-    },
-    {
-      "title": "AI diagnosis and evaluation",
-      "description": "Diagnosing what models capture, miss, or distort in difficult data: noisy OCR, mixed languages, implicit meaning, and historically distant contexts."
-    },
-    {
-      "title": "Matching and reasoning algorithms",
-      "description": "Developing semantic matching, relation reasoning, and multimodal representation methods, extending my earlier work on vision-language reasoning."
-    }
-  ],
-  "currentWork": {
-    "label": "Current Work",
-    "title": "Archival search for intellectual history",
-    "description": "My current work combines textual unit identification, semantic representation evaluation, calibrated search, and close reading. It is part of CASCADE, an EU MSCA Doctoral Network on Computational Analysis of Semantic Change Across Different Environments.",
-    "note": "2024-2028 · CASCADE PhD10",
-    "next": "Next: Locke reception article, retrieval benchmark, calibrated search pipeline.",
-    "links": [
+  "kicker": "Representation learning · Semantics · Intellectual history",
+  "subtitle": "I study how knowledge is represented, learned, and transformed across artificial and human systems.",
+  "lede": "My research combines representation learning, semantics, and diagnostic evaluation with computational approaches to intellectual history.",
+  "description": "Yu Wu studies learned representations and semantic relations in machine learning, and the transformation of ideas in intellectual history.",
+  "affiliation": "University of Helsinki",
+  "department": "Department of Digital Humanities",
+  "programme": "Doctoral Programme in Science (SciDoc) · Computer Science",
+  "research": {
+    "label": "Research agenda",
+    "title": "Knowledge across artificial and human systems",
+    "overview": "I am particularly interested in how learned representations capture (or fail to capture) meaningful concepts, relations, and distinctions, and in how ideas are interpreted, contested, and transformed over historical time. More broadly, I am interested in what the comparison between artificial learning and historically situated practices of knowing can teach us about the nature of knowledge and ideas.",
+    "publicationThemes": [
+      "Representation learning",
+      "Semantic relations",
+      "Semantic search",
+      "Diagnostic evaluation",
+      "Reasoning",
+      "Adaptation",
+      "Responsible AI",
+      "Multimodality",
+      "Intellectual history",
+      "Historical context"
+    ],
+    "areas": [
       {
-        "label": "PhD project page",
-        "url": "https://www.horizoncascade.net/phd10/"
+        "title": "Representation Learning and Semantics",
+        "description": "I study how AI systems represent complex concepts and relations, what semantic structure emerges in learned representations, and how it supports semantic comparison, retrieval, reasoning, and judgment. I am particularly interested in what these representations reveal about the structure and organization of learned knowledge."
       },
       {
-        "label": "CASCADE researchers",
-        "url": "https://www.horizoncascade.net/our-team/researchers/"
+        "title": "Diagnosis, Adaptation, and Responsible AI",
+        "description": "Through diagnostic evaluation, I study systematic model capabilities and limitations, use these findings to probe learned representations, and investigate how models can be adapted to become more robust and responsive to different tasks and contexts. This work also contributes to broader questions of responsible AI and alignment, particularly the design of systems that are sensitive to cultural and historical context."
+      },
+      {
+        "title": "Computational Intellectual History and Engagement",
+        "description": "I study how ideas are interpreted, taken up, contested, adapted, and transformed over time. My current work develops computational approaches to identify intellectual engagement beyond generic semantic similarity, aiming to recover meaningful relations between texts while supporting substantive interpretation in intellectual history."
       }
-    ]
+    ],
+    "project": {
+      "name": "CASCADE",
+      "fullName": "Computational Analysis of Semantic Change Across Different Environments",
+      "funding": "Marie Skłodowska-Curie Actions Doctoral Network",
+      "projectTitle": "Adapting computational methods to challenges in historical research at scale",
+      "focus": "Building on CASCADE's expertise in semantic change, PhD10 adapts computational methods for historical research at scale, tests their robustness against data and methodological confounders, and develops adaptable environments for new data and questions.",
+      "url": "https://www.horizoncascade.net/phd10/"
+    }
   },
+  "background": [
+    {
+      "period": "2024–present",
+      "title": "Doctoral Researcher · CASCADE PhD10",
+      "place": "University of Helsinki",
+      "description": "Research across semantic search, natural language processing, and computational intellectual history."
+    },
+    {
+      "period": "2021-2024",
+      "title": "M.Sc. in Computer Science and Technology",
+      "place": "ShanghaiTech University",
+      "description": "Research on image–text matching, relation reasoning, and efficient vision–language learning."
+    }
+  ],
   "links": [
+    {
+      "label": "Email",
+      "url": "mailto:yu.wu@helsinki.fi"
+    },
     {
       "label": "University profile",
       "url": "https://researchportal.helsinki.fi/en/persons/yu-wu"
     },
     {
-      "label": "CASCADE profile",
+      "label": "CASCADE",
       "url": "https://www.horizoncascade.net/phd10/"
     },
     {
@@ -62,12 +85,14 @@
     {
       "label": "LinkedIn",
       "url": "https://fi.linkedin.com/in/yu-wu-0160ba147"
+    },
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=YT2O5ywAAAAJ"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/yu-wyatt-wu"
     }
-  ],
-  "analytics": {
-    "provider": "Plausible or Cloudflare Web Analytics",
-    "plausibleDomain": "",
-    "cloudflareToken": "",
-    "note": "Privacy-friendly aggregate analytics only. This site does not store full visitor IP addresses."
-  }
+  ]
 }
