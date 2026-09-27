@@ -92,12 +92,13 @@ function parseFields(input) {
 }
 
 function normalizePublication(publication) {
-  const venue =
+  const rawVenue =
     publication.venue ||
     publication.booktitle ||
     publication.journal ||
     publication.publisher ||
     "Publication";
+  const venue = cleanVenue(rawVenue);
   const links = [];
   if (publication.doi) links.push({ label: "DOI", url: `https://doi.org/${publication.doi}` });
   if (publication.eprint && (publication.archiveprefix || "").toLowerCase() === "arxiv") {
@@ -126,6 +127,14 @@ function normalizePublication(publication) {
     links,
     stamp: stampFor(venue)
   };
+}
+
+function cleanVenue(venue = "") {
+  return String(venue)
+    .replace(/\s+\d{4}\b/g, "")
+    .replace(/\s+main\b/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function splitList(value = "") {
