@@ -146,7 +146,6 @@ function splitList(value = "") {
 }
 
 function stampFor(venue = "") {
-  if (/nlp4dh/i.test(venue)) return "NLP4DH";
   const short = venue.match(/\b(EACL|CVPR|ICCV|ACL|EMNLP|NAACL)\b/i);
   return short ? short[1].toUpperCase() : venue.split(/\s+/).slice(0, 2).join(" ");
 }
