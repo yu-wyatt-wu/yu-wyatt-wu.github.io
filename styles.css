@@ -631,23 +631,6 @@ blockquote {
   min-width: 0;
 }
 
-.pub-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
-  color: var(--green);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 750;
-  text-transform: uppercase;
-}
-
-.pub-meta span + span::before {
-  margin-right: 0.75rem;
-  color: var(--rule);
-  content: "/";
-}
-
 .pub-labels {
   display: flex;
   flex-wrap: wrap;

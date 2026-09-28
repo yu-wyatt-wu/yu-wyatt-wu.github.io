@@ -185,7 +185,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=28">
+    <link rel="stylesheet" href="styles.css?v=29">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -340,7 +340,6 @@ function publicationCard(publication, compact) {
                 <small>${esc(publication.year)}</small>
               </div>
               <div class="pub-body">
-                <div class="pub-meta"><span>${esc(publication.venue)}</span><span>${esc(publication.year)}</span></div>
                 <div class="pub-labels" aria-label="Research themes">${publication.labels.map((label) => `<span>${esc(label)}</span>`).join("")}</div>
                 <h4>${primaryLink ? `<a href="${attr(primaryLink.url)}">${esc(publication.title)}</a>` : esc(publication.title)}</h4>
                 <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author, publication.equalContributors)}</p>
