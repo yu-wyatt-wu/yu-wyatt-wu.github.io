@@ -695,11 +695,12 @@ blockquote {
   margin: 0.8rem 0 0;
 }
 
-.equal-note {
+.publication-legend {
+  margin: 0.75rem 0 0;
   color: var(--muted);
   font-family: var(--sans);
   font-size: 0.72rem;
-  white-space: nowrap;
+  line-height: 1.4;
 }
 
 .contribution {

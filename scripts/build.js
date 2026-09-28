@@ -185,7 +185,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="stylesheet" href="styles.css?v=28">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -306,9 +306,13 @@ function researchSection() {
 function publicationsSection() {
   const current = publications.filter((publication) => Number(publication.year) >= 2025);
   const earlier = publications.filter((publication) => Number(publication.year) < 2025);
+  const equalLegend = publications.some((publication) => publication.equalContributors.length)
+    ? `<p class="publication-legend">* Equal contribution</p>`
+    : "";
   return `<section class="section" id="publications" aria-labelledby="publications-title">
         <header class="section-intro">
           <h2 id="publications-title">Publications</h2>
+          ${equalLegend}
         </header>
         ${publicationGroup("Current research", current, false)}
         ${publicationGroup("Earlier research", earlier, true)}
@@ -339,7 +343,7 @@ function publicationCard(publication, compact) {
                 <div class="pub-meta"><span>${esc(publication.venue)}</span><span>${esc(publication.year)}</span></div>
                 <div class="pub-labels" aria-label="Research themes">${publication.labels.map((label) => `<span>${esc(label)}</span>`).join("")}</div>
                 <h4>${primaryLink ? `<a href="${attr(primaryLink.url)}">${esc(publication.title)}</a>` : esc(publication.title)}</h4>
-                <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author, publication.equalContributors)}${publication.equalContributors.length ? ` <span class="equal-note">* equal contribution</span>` : ""}</p>
+                <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author, publication.equalContributors)}</p>
                 ${publication.note ? `<p class="contribution"><span>Contribution</span>${esc(publication.note)}</p>` : ""}
                 <div class="pub-footer">
                   <div class="publication-links">${publication.links
