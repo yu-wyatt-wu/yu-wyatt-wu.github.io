@@ -384,6 +384,10 @@ h1 em {
 .profile-programme span {
   display: block;
   margin-top: 0.12rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .profile-identifiers {
