@@ -186,7 +186,7 @@ main {
 h1 {
   max-width: 9ch;
   margin: 1.35rem 0 0;
-  font-size: 3.9rem;
+  font-size: 4.5rem;
   font-weight: 400;
   line-height: 0.9;
 }
@@ -200,7 +200,7 @@ h1 em {
   margin-top: 0.5rem;
   color: var(--accent-deep);
   font-family: var(--cjk-display);
-  font-size: 2.2rem;
+  font-size: 2.45rem;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.14em;
@@ -424,7 +424,7 @@ h2 {
   max-width: 16em;
   margin: 0;
   color: var(--accent-deep);
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 400;
   line-height: 1;
 }
