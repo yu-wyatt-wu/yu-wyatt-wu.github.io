@@ -370,6 +370,42 @@ h1 em {
   line-height: 1.55;
 }
 
+.profile-programme a {
+  color: var(--ink);
+  text-decoration-color: rgba(139, 47, 36, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.profile-programme a:hover {
+  color: var(--accent-deep);
+}
+
+.profile-programme span {
+  display: block;
+  margin-top: 0.12rem;
+}
+
+.profile-identifiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  margin-top: 0.8rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.profile-identifiers a {
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+.profile-identifiers a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .section {
   padding: 6.5rem 0;
   border-top: 1px solid rgba(93, 36, 29, 0.17);
@@ -985,6 +1021,17 @@ blockquote {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 400;
+}
+
+.education-entry h3 a {
+  color: inherit;
+  text-decoration-color: rgba(139, 47, 36, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.education-entry h3 a:hover {
+  color: var(--accent-deep);
 }
 
 .education-entry p {

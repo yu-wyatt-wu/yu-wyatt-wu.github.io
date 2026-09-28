@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=24">
+    <link rel="stylesheet" href="styles.css?v=25">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -246,7 +246,11 @@ function heroSection() {
             <p class="profile-group"><a href="${attr(profile.groupUrl)}">${esc(profile.group)}</a></p>
             <p class="profile-unit"><span>${esc(profile.department)}</span><span>${esc(profile.faculty)}</span></p>
             <p class="profile-affiliation">${esc(profile.affiliation)}</p>
-            <p class="profile-programme">${esc(profile.programme)}</p>
+            <p class="profile-programme"><a href="${attr(profile.programmeUrl)}">${esc(profile.programme)}</a><span>${esc(profile.discipline)}</span></p>
+            <nav class="profile-identifiers" aria-label="Academic profiles">
+              <a href="${attr(findLink("University profile"))}">University profile</a>
+              <a href="${attr(findLink("ORCID"))}">ORCID</a>
+            </nav>
           </div>
         </aside>
       </section>`;
@@ -469,7 +473,7 @@ function teachingItem(item) {
             <time>${esc(item.period)}</time>
             <div>
               <div class="teaching-meta"><span>${esc(item.type)}</span>${item.hours ? `<span>${esc(item.hours)}</span>` : ""}</div>
-              <h3>${esc(item.title)}</h3>
+              <h3>${item.url ? `<a href="${attr(item.url)}">${esc(item.title)}</a>` : esc(item.title)}</h3>
               <p>${esc(item.description)}</p>
             </div>
           </article>`;

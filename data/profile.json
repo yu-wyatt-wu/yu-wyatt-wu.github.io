@@ -14,7 +14,9 @@
   "groupUrl": "https://www.helsinki.fi/en/researchgroups/computational-history",
   "department": "Department of Digital Humanities",
   "faculty": "Faculty of Humanities",
-  "programme": "Doctoral Programme in Science (SciDoc) · Computer Science",
+  "programme": "Doctoral Programme in Science (SciDoc)",
+  "programmeUrl": "https://www.helsinki.fi/en/admissions-and-education/apply-doctoral-programmes/doctoral-programmes/doctoral-programme-science",
+  "discipline": "Computer Science",
   "research": {
     "title": "Research agenda",
     "overview": "I am particularly interested in how learned representations capture (or fail to capture) meaningful concepts, relations, and distinctions, and in how ideas are interpreted, contested, and transformed over historical time. More broadly, I am interested in what the comparison between artificial learning and historically situated practices of knowing can teach us about the nature of knowledge and ideas.",
@@ -59,6 +61,7 @@
       "title": "Doctoral Programme in Science (SciDoc) · Computer Science",
       "place": "University of Helsinki",
       "thesis": "Search as Archival Discovery: Language Models for Eighteenth-Century Intellectual History",
+      "url": "https://www.helsinki.fi/en/admissions-and-education/apply-doctoral-programmes/doctoral-programmes/doctoral-programme-science",
       "logo": "assets/helsinki-logo.svg",
       "logoAlt": "University of Helsinki"
     },
