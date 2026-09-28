@@ -123,6 +123,7 @@ function normalizePublication(publication) {
     ...publication,
     venue,
     labels,
+    equalContributors: splitList(publication.equal_contributors),
     authorDisplay: publication.author_display,
     links,
     stamp: stampFor(venue)
@@ -184,7 +185,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=26">
+    <link rel="stylesheet" href="styles.css?v=27">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -338,7 +339,7 @@ function publicationCard(publication, compact) {
                 <div class="pub-meta"><span>${esc(publication.venue)}</span><span>${esc(publication.year)}</span></div>
                 <div class="pub-labels" aria-label="Research themes">${publication.labels.map((label) => `<span>${esc(label)}</span>`).join("")}</div>
                 <h4>${primaryLink ? `<a href="${attr(primaryLink.url)}">${esc(publication.title)}</a>` : esc(publication.title)}</h4>
-                <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author)}</p>
+                <p class="authors">${publication.authorDisplay ? highlightOwnName(publication.authorDisplay) : formatAuthors(publication.author, publication.equalContributors)}${publication.equalContributors.length ? ` <span class="equal-note">* equal contribution</span>` : ""}</p>
                 ${publication.note ? `<p class="contribution"><span>Contribution</span>${esc(publication.note)}</p>` : ""}
                 <div class="pub-footer">
                   <div class="publication-links">${publication.links
@@ -350,13 +351,16 @@ function publicationCard(publication, compact) {
             </article>`;
 }
 
-function formatAuthors(authors = "") {
+function formatAuthors(authors = "", equalContributors = []) {
+  const equalNames = new Set(equalContributors.map((name) => displayName(name.trim()).toLowerCase()));
   return (
     authors
       .split(/\s+and\s+/)
       .map((name) => {
         const clean = displayName(name.trim());
-        return /Yu\s+Wu/i.test(clean) ? `<strong>${esc(clean)}</strong>` : esc(clean);
+        const marker = equalNames.has(clean.toLowerCase()) ? "*" : "";
+        const rendered = `${esc(clean)}${marker}`;
+        return /Yu\s+Wu/i.test(clean) ? `<strong>${rendered}</strong>` : rendered;
       })
       .join(", ") + "."
   );

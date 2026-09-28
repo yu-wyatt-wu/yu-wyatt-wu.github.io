@@ -695,6 +695,13 @@ blockquote {
   margin: 0.8rem 0 0;
 }
 
+.equal-note {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
 .contribution {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
