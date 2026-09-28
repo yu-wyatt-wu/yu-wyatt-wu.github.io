@@ -969,6 +969,30 @@ blockquote {
   line-height: 1.6;
 }
 
+.elsewhere {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 42rem);
+  gap: 3.5rem;
+  align-items: start;
+  padding: 3.5rem 0 4.5rem;
+  border-top: 1px solid rgba(93, 36, 29, 0.17);
+}
+
+.elsewhere h2 {
+  margin: 0;
+  color: var(--accent-deep);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.elsewhere p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
 .education-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -1160,6 +1184,11 @@ blockquote {
 
   .earlier-work .publication-list {
     grid-template-columns: 1fr;
+  }
+
+  .elsewhere {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
 }

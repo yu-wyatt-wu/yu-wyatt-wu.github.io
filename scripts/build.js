@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=30">
+    <link rel="stylesheet" href="styles.css?v=31">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -224,6 +224,7 @@ function homePage() {
       ${newsSection()}
       ${publicationsSection()}
       ${teachingSection()}
+      ${elsewhereSection()}
 `, { isHomePage: true });
 }
 
@@ -486,6 +487,14 @@ function teachingItem(item) {
               <p>${esc(item.description)}</p>
             </div>
           </article>`;
+}
+
+function elsewhereSection() {
+  if (!profile.elsewhere) return "";
+  return `<aside class="elsewhere" aria-labelledby="elsewhere-title">
+        <h2 id="elsewhere-title">${esc(profile.elsewhere.title)}</h2>
+        <p>${esc(profile.elsewhere.body)}</p>
+      </aside>`;
 }
 
 function educationSection() {
