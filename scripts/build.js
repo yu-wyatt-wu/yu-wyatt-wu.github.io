@@ -208,6 +208,9 @@ ${main}
       <p>${esc(profile.name)} · <span lang="zh-Hans">${esc(profile.chineseName)}</span> · ${esc(profile.affiliation)}</p>
       <a class="top-link" href="${attr(topHref)}" aria-label="Back to top">↑</a>
     </footer>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"91fb6ec8e1d04180b41a7f05e22f0056"}'></script>
+    <!-- End Cloudflare Web Analytics -->
   </body>
 </html>
 `;
