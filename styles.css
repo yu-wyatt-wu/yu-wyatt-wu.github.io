@@ -177,7 +177,7 @@ main {
   margin: 0;
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -682,7 +682,7 @@ blockquote {
   margin: 0.75rem 0 0;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 
