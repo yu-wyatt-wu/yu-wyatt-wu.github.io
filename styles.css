@@ -8,8 +8,8 @@
   --paper: #f4efe3;
   --paper-deep: #e8dfca;
   --ink: #1d1a16;
-  --muted: #62594d;
-  --faint: #948874;
+  --muted: #51483e;
+  --faint: #786d5c;
   --rule: #c9ba9c;
   --accent: #8b2f24;
   --accent-deep: #5d241d;
@@ -396,7 +396,7 @@ h1 em {
   gap: 0.35rem 0.9rem;
   margin-top: 0.8rem;
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1.4;
 }
 
@@ -470,7 +470,7 @@ blockquote {
 .research-areas span {
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
@@ -527,7 +527,7 @@ blockquote {
 .project-funding {
   color: var(--green);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   line-height: 1.45;
@@ -622,7 +622,7 @@ blockquote {
   margin-top: 0.25rem;
   color: var(--faint);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   letter-spacing: 0.08em;
 }
 
@@ -638,7 +638,7 @@ blockquote {
   margin-top: 0.7rem;
   color: var(--blue);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
 }
 
@@ -682,7 +682,7 @@ blockquote {
   margin: 0.75rem 0 0;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   line-height: 1.4;
 }
 
@@ -698,7 +698,7 @@ blockquote {
 .contribution span {
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -868,7 +868,7 @@ blockquote {
   border: 1px solid rgba(139, 47, 36, 0.42);
   color: var(--accent-deep);
   font-family: var(--sans);
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   line-height: 1;
