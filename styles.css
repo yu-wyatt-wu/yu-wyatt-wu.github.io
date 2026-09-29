@@ -682,7 +682,7 @@ blockquote {
   margin: 0.75rem 0 0;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -698,9 +698,9 @@ blockquote {
 .contribution span {
   color: var(--accent);
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
