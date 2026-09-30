@@ -720,8 +720,7 @@ blockquote {
   gap: 0.65rem;
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .publication-links a {
@@ -745,8 +744,7 @@ blockquote {
 .publication-card summary {
   cursor: pointer;
   list-style: none;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .publication-card summary::before {
