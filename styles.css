@@ -107,7 +107,7 @@ p {
   color: var(--ink);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 750;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -178,7 +178,7 @@ main {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.875rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -318,7 +318,7 @@ h1 em {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -471,7 +471,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.1em;
 }
 
@@ -528,7 +528,7 @@ blockquote {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1.45;
   text-transform: uppercase;
@@ -639,7 +639,7 @@ blockquote {
   color: var(--blue);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .pub-labels span {
@@ -699,7 +699,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -834,7 +834,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -869,7 +869,7 @@ blockquote {
   color: var(--accent-deep);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
@@ -933,7 +933,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -945,7 +945,7 @@ blockquote {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
