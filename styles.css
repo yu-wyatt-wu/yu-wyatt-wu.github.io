@@ -107,7 +107,7 @@ p {
   color: var(--ink);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -143,6 +143,7 @@ p {
   gap: 0.85rem 1.3rem;
   font-family: var(--sans);
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -178,7 +179,7 @@ main {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -231,6 +232,7 @@ h1 em {
   margin-top: 1.8rem;
   font-family: var(--sans);
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -318,7 +320,7 @@ h1 em {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -528,7 +530,7 @@ blockquote {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 1.45;
   text-transform: uppercase;
@@ -699,7 +701,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -718,6 +720,7 @@ blockquote {
   gap: 0.65rem;
   font-family: var(--sans);
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -742,6 +745,7 @@ blockquote {
 .publication-card summary {
   cursor: pointer;
   list-style: none;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -834,7 +838,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -869,7 +873,7 @@ blockquote {
   color: var(--accent-deep);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
@@ -878,6 +882,7 @@ blockquote {
 .news-item .news-source {
   font-family: var(--sans);
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -903,6 +908,7 @@ blockquote {
   margin: 1.35rem 0 0;
   font-family: var(--sans);
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -933,7 +939,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -945,7 +951,7 @@ blockquote {
   color: var(--green);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
