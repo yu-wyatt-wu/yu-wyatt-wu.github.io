@@ -477,7 +477,7 @@ blockquote {
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: var(--weight-ui);
+  font-weight: var(--weight-label);
   letter-spacing: 0.1em;
 }
 
