@@ -15,7 +15,17 @@
     "period": "May 2025",
     "title": "Helsinki Digital Humanities Hackathon",
     "type": "Co-leader",
-    "description": "Co-leader of the Oral History team."
+    "description": "Co-led an interdisciplinary team developing a multimodal workflow for studying emotion in Holocaust testimonies. The team’s work informed a subsequent paper and drew on a multilingual dataset of 100 interviews that I helped curate.",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://aclanthology.org/2026.htres-2.8.pdf"
+      },
+      {
+        "label": "Dataset",
+        "url": "https://zenodo.org/records/18701345"
+      }
+    ]
   },
   {
     "period": "2019–2023",

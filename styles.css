@@ -977,6 +977,25 @@ blockquote {
   line-height: 1.6;
 }
 
+.teaching-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+}
+
+.teaching-links a {
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+.teaching-links a:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
 .elsewhere {
   display: grid;
   grid-template-columns: 10rem minmax(0, 42rem);
