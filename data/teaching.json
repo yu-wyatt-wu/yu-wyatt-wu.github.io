@@ -15,15 +15,23 @@
     "period": "May 2025",
     "title": "Helsinki Digital Humanities Hackathon",
     "type": "Co-leader",
-    "description": "Co-led an interdisciplinary team developing a multimodal workflow for studying emotion in Holocaust testimonies. The team’s work informed a subsequent paper and drew on a multilingual dataset of 100 interviews that I helped curate.",
-    "links": [
+    "description": [
       {
-        "label": "Paper",
+        "text": "Co-led an interdisciplinary team developing a multimodal workflow for studying emotion in Holocaust testimonies. The team’s work informed a "
+      },
+      {
+        "text": "subsequent paper",
         "url": "https://aclanthology.org/2026.htres-2.8.pdf"
       },
       {
-        "label": "Dataset",
+        "text": " and drew on a "
+      },
+      {
+        "text": "multilingual dataset of 100 interviews",
         "url": "https://zenodo.org/records/18701345"
+      },
+      {
+        "text": " that I helped curate."
       }
     ]
   },

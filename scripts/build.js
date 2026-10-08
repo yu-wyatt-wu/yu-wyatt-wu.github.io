@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=32">
+    <link rel="stylesheet" href="styles.css?v=33">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -484,12 +484,17 @@ function teachingItem(item) {
             <div>
               <div class="teaching-meta"><span>${esc(item.type)}</span>${item.hours ? `<span>${esc(item.hours)}</span>` : ""}</div>
               <h3>${item.url ? `<a href="${attr(item.url)}">${esc(item.title)}</a>` : esc(item.title)}</h3>
-              <p>${esc(item.description)}</p>
-              ${item.links?.length ? `<div class="teaching-links" aria-label="Related outputs">${item.links
-                .map((link) => `<a href="${attr(link.url)}">${esc(link.label)}</a>`)
-                .join("")}</div>` : ""}
+              <p>${renderInlineText(item.description)}</p>
             </div>
           </article>`;
+}
+
+function renderInlineText(value) {
+  if (typeof value === "string") return esc(value);
+  if (!Array.isArray(value)) return "";
+  return value
+    .map((part) => (part.url ? `<a href="${attr(part.url)}">${esc(part.text)}</a>` : esc(part.text)))
+    .join("");
 }
 
 function elsewhereSection() {

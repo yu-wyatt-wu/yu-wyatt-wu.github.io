@@ -977,23 +977,14 @@ blockquote {
   line-height: 1.6;
 }
 
-.teaching-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 0.7rem;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-}
-
-.teaching-links a {
+.teaching-item p a {
   color: var(--accent-deep);
-  text-decoration: none;
+  text-decoration-color: rgba(93, 36, 29, 0.35);
+  text-underline-offset: 0.16em;
 }
 
-.teaching-links a:hover {
+.teaching-item p a:hover {
   color: var(--blue);
-  text-decoration: underline;
 }
 
 .elsewhere {
