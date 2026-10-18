@@ -60,6 +60,16 @@
       "period": "2024–present",
       "title": "Doctoral Programme in Science (SciDoc) · Computer Science",
       "place": "University of Helsinki",
+      "supervisors": [
+        {
+          "name": "Eetu Mäkelä",
+          "url": "https://researchportal.helsinki.fi/en/persons/jarkko-ilkka-eetu-m%C3%A4kel%C3%A4/"
+        },
+        {
+          "name": "Mikko Tolonen",
+          "url": "https://researchportal.helsinki.fi/en/persons/mikko-tolonen/"
+        }
+      ],
       "thesisLabel": "Provisional thesis topic",
       "thesis": "Search as Archival Discovery: Language Models for Eighteenth-Century Intellectual History",
       "url": "https://www.helsinki.fi/en/admissions-and-education/apply-doctoral-programmes/doctoral-programmes/doctoral-programme-science",

@@ -524,6 +524,7 @@ function educationItem(item) {
             <div class="education-copy">
               <h3>${esc(item.title)}</h3>
               <p class="education-place"><strong>${esc(item.place)}</strong></p>
+              ${item.supervisors?.length ? `<p class="education-advisor"><span>Supervisors:</span> ${item.supervisors.map((person) => `<a href="${attr(person.url)}">${esc(person.name)}</a>`).join(", ")}</p>` : ""}
               ${item.advisor ? `<p class="education-advisor"><span>Advisor:</span> <a href="${attr(item.advisor.url)}">${esc(item.advisor.name)}</a></p>` : ""}
               <p class="education-thesis"><span>${esc(item.thesisLabel || "Thesis")}:</span> <em>${esc(item.thesis)}</em></p>
             </div>
