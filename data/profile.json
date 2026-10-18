@@ -70,6 +70,10 @@
       "period": "2021–2024",
       "title": "M.Sc. in Engineering · Computer Science and Technology",
       "place": "ShanghaiTech University",
+      "advisor": {
+        "name": "Xuming He",
+        "url": "https://faculty.sist.shanghaitech.edu.cn/faculty/hexm/index.html"
+      },
       "thesis": "Relational Matching in Vision and Language Based on Linguistic Structure",
       "logo": "assets/shanghaitech-logo.svg",
       "logoAlt": "ShanghaiTech University"

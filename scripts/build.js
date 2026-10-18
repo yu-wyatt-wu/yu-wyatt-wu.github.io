@@ -184,7 +184,7 @@ ${shareMeta}
     <link rel="mask-icon" href="assets/wy-mark.svg" color="#5d241d">
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="assets/ma-shan-zheng.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=33">
+    <link rel="stylesheet" href="styles.css?v=34">
   </head>
   <body id="top">
     <div class="grain" aria-hidden="true"></div>
@@ -524,6 +524,7 @@ function educationItem(item) {
             <div class="education-copy">
               <h3>${esc(item.title)}</h3>
               <p class="education-place"><strong>${esc(item.place)}</strong></p>
+              ${item.advisor ? `<p class="education-advisor"><span>Advisor:</span> <a href="${attr(item.advisor.url)}">${esc(item.advisor.name)}</a></p>` : ""}
               <p class="education-thesis"><span>${esc(item.thesisLabel || "Thesis")}:</span> <em>${esc(item.thesis)}</em></p>
             </div>
             ${item.logo ? `<img class="education-logo" src="${attr(item.logo)}" alt="${attr(item.logoAlt || item.place)} logo">` : ""}

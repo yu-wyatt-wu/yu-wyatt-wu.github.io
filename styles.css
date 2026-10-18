@@ -1081,6 +1081,24 @@ blockquote {
   margin-top: 0.45rem;
 }
 
+.education-advisor {
+  font-size: 0.95rem;
+}
+
+.education-advisor span {
+  color: var(--ink);
+}
+
+.education-advisor a {
+  color: var(--accent-deep);
+  text-decoration-color: rgba(93, 36, 29, 0.35);
+  text-underline-offset: 0.16em;
+}
+
+.education-advisor a:hover {
+  color: var(--blue);
+}
+
 .education-thesis {
   margin-top: 0.3rem;
   font-size: 0.95rem;
